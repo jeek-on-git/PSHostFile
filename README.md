@@ -2,7 +2,7 @@
 PowerShell Module for managing Windows Host file.
 
 ## Overview
-This module provides an easy way to manage the Windows 'hosts' file. It creates a PowerShell object out of the host file thereby making it easy to modify the Host file.
+This module provides an easy way to manage the Windows 'hosts' file. It creates a PowerShell object out of the host file thereby making it easy to modify using the familar PowerShell Verb-Noun commands.
 
 ## Getting Start
 Start by installing the module
