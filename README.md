@@ -7,12 +7,12 @@ This module provides an easy way to manage the Windows 'hosts' file. It creates 
 ## Getting Start
 Start by installing the module
 
-``` Import-Module HostFile```
+`Import-Module HostFile`
 
 Get the modules details
 
-```Get-Module HostFile```
+`Get-Module HostFile`
 
 List all of the module's commands
 
-```Get-Command -Module HostFile```
+`Get-Command -Module HostFile`
