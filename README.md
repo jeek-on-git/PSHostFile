@@ -1,2 +1,2 @@
 # HostFile
-PowerShell Windows HostFile Module
+PowerShell Module for managing Windows Host file.
