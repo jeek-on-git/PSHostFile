@@ -10,7 +10,7 @@ A PowerShell Module for managing the Windows Host file.
 + [Commands](#Commands)
 
 ## Overview
-This module provides an easy way to manage the Windows 'hosts' file using PowerShell. It provides a collection of custom functions for adding, removing and updating entries in the Windows 'hosts' file.
+This module provides an easy way to manage the Windows 'hosts' file using PowerShell. It provides a collection of custom functions for adding, removing and updating host file entries.
 
 ## Installing
 
@@ -38,7 +38,7 @@ Get-Command -Module HostFile
 
 ## Uninstalling
 
-To remove the module from your system you can easily uninstall it using the following PowerShell command.
+Uninstalling the module.
 
 ```PowerShell
 Get-Module HostFile | Remove-Module
@@ -47,20 +47,23 @@ Uninstall-Module HostFile -AllVersions -Confirm:$false
 
 # Getting Started (Overview)
 
-Start by creating a host file object and run the `Get-HostFile` command. This will load the host file into memory and create two global variables `$hostFile` and `$hostFileObject`.
+Start by creating a host file object and run the `Get-HostFile` command.
 
 ```PowerShell
 Get-Host
 ```
 
-`$hostFile` is the path to the current host file loaded into memory. By default the Windows host file is selected, however, you can specify a different hosts file.
+This will load the host file into memory and create two global variables `$hostFile` and `$hostFileObject`.
+
+`$hostFile` variable is the path to the current host file loaded. By default this is Windows host file located in the C`:\Windows\System32\Drivers\etc directory`, however, you can specify a different hosts file.
 
 The `$hostFileObject` variable is the custom PowerShell Object `[HostFile]` representing the Windows 'Hosts' file. This is what gets modified when updating, adding or removing entries via the various commands.
 
-You can run the `Get-HostFile` command at any time to view the state of the `$hostFileObject`; great way to view any changes that have been made.
+You can run the `Get-HostFile` command at any time to view the state of the `$hostFileObject` and it is great way to view any changes that have been made.
 
 If you want to load a custom hosts file then use the `New-HostFileObject` command with the `-hostFilePath` parameter and specify the path to the hosts file. The `Get-HostFile` command calls the `Get-HostFileObject` command in the background but allows you to specify an alternate hosts file.
 ```PowerShell
+# this loads the testing 'hosts' file from the '.\HostFile\hosts' file in the HostFile module directory.
 New-HostFileObject -hostFilePath "C:\Program Files\PowerShell\Modules\HostFile\Files\hosts"
 ```
 ## `EntryType`
@@ -79,7 +82,7 @@ When the hosts file is loaded, each line is read and then designated an 'Entry T
 
 This is the resulting `HostFileObject` object after being loaded. As this is a PowerShell object it makes it very easy to filter, add and remove entries.
 
-In addition to the `EntryType` property a `Line` number property is also added.
+In addition to the `EntryType` property a `Line` number property is also added. This makes selecting specific lines very easy.
 
 ```PowerShell
 Line EntryType IPAddress        Hostname          Comment
@@ -133,13 +136,14 @@ Get-HostFile | Where-Object EntryType -eq 'Commented'
 # this will filter entries and return the specific line number
 Get-HostFile | Where-Object Line -eq 24
 
-# this will match the '2\d' (number 2 followed by any digits) pattern
+# this will match the '2\d' (number 2 followed by any digits) pattern, i.e 20 through to 29.
 Get-HostFile | Where-Object line -match '2\d'
 
 # select the last line
 Get-HostFile | Select-Object -Last 1
 
-# this will join the specified numbers using the regex and/or (the pipe "|" symbol) and will match the line against the specified numbers
+# this will join the specified numbers using the regex and/or (the pipe "|" symbol)
+# and will match the line against the specified numbers
 $lines = '21','23','25','26' -join '|'
 Get-HostFile | Where-Object line -match $lines
 ```
@@ -147,11 +151,9 @@ Get-HostFile | Where-Object line -match $lines
 ## A new [HostFile] object
 
 There are a couple of ways to add and remove entries.
-The first is by creating a `[HostFile]` object using the `New-HostFileEntry` command. This can be used to add and remove entries from the `$HostFileObject`.
+The first is by creating a custom `[HostFile]` object using the `New-HostFileEntry` command. The result of this command can be used to either add or remove entries from the `$HostFileObject`.
 
-Start by creating a `[HostFile]` object.
-
-### Adding
+### Add Host Entry
 
 There are a number of ways to add entries.
 
@@ -170,9 +172,9 @@ $blank = New-HostFileEntry -entryType Blank
 Add-HostFileEntry $blank
 ```
 
-By default, when adding a new entry it will be appended to the end of the `$hostFileObject`. If you want to add an entry at specific spot you first need to remove all entries from the specific line, add the new line, then add back the removed entries. This is very simple to do.
+By default, when adding a new entry it will be appended to the end of the `$hostFileObject`. If you want to add an entry at specific line you first need to remove all entries from the specific line, add the new line, then add back the removed entries. This is very simple to do.
 
-In this example, we want to add a new line at line 32. Start by selecting all entries from line 32 to the end. Next, remove them all, add the new line and then add the removed entries back.
+In this example, we want to add a new line at line 32. Start by selecting all entries from line 32 to the end, remove them all, add the new line and then add the removed entries back.
 ```PowerShell
 # in this example the hosts file has 50 entries. We want to add an entry to line 32. Select all entries, including line 32.
 # select those entries to be removed. the last 18 entries are being selected.
@@ -185,6 +187,7 @@ $temp | Remove-HostFileEntry
 Get-HostFile
 
 # add the new entry
+$entry = New-HostFileEntry -entryType HostEntry -ipAddress 192.168.1.1 -hostname router -comment 'Comment'
 $entry | Add-HostFileEntry
 
 # add the removed entries back
@@ -194,15 +197,19 @@ $temp | Add-HostFileEntry
 Get-HostFile
 ```
 
-## Removing
+The new `$entry` should be at line 32.
+
+## Remove Host Entry
+
+Remove entries is just as easy
 
 ```PowerShell
-
 # this will remove all entries that equal the specified hostname
 $entry = Get-HostFile | Where-Object Hostname -eq 'server'
 Remove-HostFileEntry -hostFileEntry $entry
 
 # this will remove all entries that equal the specified IP Address
+# by piping the results to the Remove-HostFileEntry
 $entry = Get-HostFile | Where-Object IPAddress -eq '192.168.0.1'
 $entry | Remove-HostFileEntry
 
@@ -216,7 +223,16 @@ Get-HostFile | Where-Object Line -eq 24 | Remove-HostFileEntry
 Get-HostFile | Select-Object -Last 1 | Remove-HostFileEntry
 ```
 
-## Updating
+## Clear All Host Entries
+
+If you want to remove all entries in one go then use the `Clear-HostFile` command.
+
+```PowerShell
+# this will remove all entries
+Clear-HostFile
+```
+
+## Update Host Entry
 
 Updating an existing entry
 
@@ -231,24 +247,15 @@ $entry = Get-HostFile | select -Last 1
 # modify the hostname
 $entry.Hostname = 'router1'
 
-<<<<<<< HEAD
 # modify the IPAddress
 $entry.IPAddress = '192.168.2.2'
 ```
-=======
 `Import-Module HostFile`
->>>>>>> faee79d97b60e5dfd63377dd4ff982aa4358a0d5
 
 
-<<<<<<< HEAD
 ## Backing up and Restoring
-=======
 `Get-Module HostFile`
->>>>>>> faee79d97b60e5dfd63377dd4ff982aa4358a0d5
 
 ## Restoring
 
-<<<<<<< HEAD
-=======
 `Get-Command -Module HostFile`
->>>>>>> faee79d97b60e5dfd63377dd4ff982aa4358a0d5
