@@ -10,8 +10,7 @@ A PowerShell Module for managing the Windows Host file.
 + [Commands](#Commands)
 
 ## Overview
-
-This module provides an easy way to manage the Windows 'hosts' file using PowerShell. It provides a collection of custom functions adding, removing and updating entries in the Windows 'hosts' file.
+This module provides an easy way to manage the Windows 'hosts' file using PowerShell. It provides a collection of custom functions for adding, removing and updating entries in the Windows 'hosts' file.
 
 ## Installing
 
@@ -228,12 +227,24 @@ $entry = Get-HostFile | select -Last 1
 # modify the hostname
 $entry.Hostname = 'router1'
 
+<<<<<<< HEAD
 # modify the IPAddress
 $entry.IPAddress = '192.168.2.2'
 ```
+=======
+`Import-Module HostFile`
+>>>>>>> faee79d97b60e5dfd63377dd4ff982aa4358a0d5
 
 
+<<<<<<< HEAD
 ## Backing up and Restoring
+=======
+`Get-Module HostFile`
+>>>>>>> faee79d97b60e5dfd63377dd4ff982aa4358a0d5
 
 ## Restoring
 
+<<<<<<< HEAD
+=======
+`Get-Command -Module HostFile`
+>>>>>>> faee79d97b60e5dfd63377dd4ff982aa4358a0d5
