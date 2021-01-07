@@ -24,7 +24,7 @@ Import-Module HostFile
 Import-Module HostFile -Scope AllUsers
 ```
 
-Get the modules details.
+Get the module's details.
 
 ```PowerShell
 Get-Module HostFile
@@ -47,18 +47,22 @@ Uninstall-Module HostFile -AllVersions -Confirm:$false
 
 # Getting Started (Overview)
 
-Start by creating a host file object and running the `Get-HostFile` command. This will load the host file into memory and create two global variables `$hostFile` and `$hostFileObject`.
+Start by creating a host file object and run the `Get-HostFile` command. This will load the host file into memory and create two global variables `$hostFile` and `$hostFileObject`.
 
-`$hostFile` is the path to the current host file loaded into memory.
+```PowerShell
+Get-Host
+```
 
-+ By default the Windows host file is selected, however, you can specify a different hosts file.
+`$hostFile` is the path to the current host file loaded into memory. By default the Windows host file is selected, however, you can specify a different hosts file.
 
-The `$hostFileObject` variable is the custom PSObject `[HostFile]` representing the Windows 'Hosts' file. This is what gets modified when setting, adding or removing entries via the `Add-HostFileEntry` and `Remove-HostFileEntry` commands.
+The `$hostFileObject` variable is the custom PowerShell Object `[HostFile]` representing the Windows 'Hosts' file. This is what gets modified when updating, adding or removing entries via the various commands.
 
-You can run the `Get-HostFile` command at any time to view the state of the `$hostFileObject`; especially if you make any a change and you want to see the result.
+You can run the `Get-HostFile` command at any time to view the state of the `$hostFileObject`; great way to view any changes that have been made.
 
-If you want to load a custom hosts file then use the `Get-HostFileObject` command with the `-hostFilePath` parameter and specify the path to the hosts file. The `Get-HostFile` command calls the `Get-HostFileObject` command in the background but allows you to specify an alternate hosts file.
-
+If you want to load a custom hosts file then use the `New-HostFileObject` command with the `-hostFilePath` parameter and specify the path to the hosts file. The `Get-HostFile` command calls the `Get-HostFileObject` command in the background but allows you to specify an alternate hosts file.
+```PowerShell
+New-HostFileObject -hostFilePath "C:\Program Files\PowerShell\Modules\HostFile\Files\hosts"
+```
 ## `EntryType`
 
 When the hosts file is loaded, each line is read and then designated an 'Entry Type' based on pattern of the line. There are 5 Entry Types (`EntryType`). These are defined as;
