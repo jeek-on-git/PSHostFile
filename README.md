@@ -209,7 +209,6 @@ $entry = Get-HostFile | Where-Object Hostname -eq 'server'
 Remove-HostFileEntry -hostFileEntry $entry
 
 # this will remove all entries that equal the specified IP Address
-# by piping the results to the Remove-HostFileEntry
 $entry = Get-HostFile | Where-Object IPAddress -eq '192.168.0.1'
 $entry | Remove-HostFileEntry
 
