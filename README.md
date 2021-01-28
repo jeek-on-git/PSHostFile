@@ -4,20 +4,13 @@ A PowerShell Module for managing the Windows Host file. It provides a collection
 
 ## Overview
 
-The Windows' Hosts file stores 'host entries', an IP Address and hostname combination that is used by the OS to resolve hostnames to IP Addresses.
+The Windows' Hosts file stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve hostnames to IP Addresses.
 
 The Host Entry uses a standard text format: `IPAddress Hostname # Comment`. Note, the comment is not mandatory and only the first two parts, `IPAddress` and `HostName` are required.
 
 This module has been tested on both Windows PowerShell (5.1) and PowerShell (7). Given this is modifying the Windows' Hosts file it will not work on Linux or Mac.
 
-## Table of Contents
-
-+ [Installing](#Installing)
-+ [Uninstalling](#Uninstalling)
-+ [Commands](#Commands)
-
-
-## Installing
+### The Basics
 
 Start by installing the module.
 
@@ -48,8 +41,6 @@ List all of the module's commands.
 Get-Command -Module HostFile
 ```
 
-## Uninstalling
-
 To remove the module, run the following,
 
 ```PowerShell
@@ -77,14 +68,14 @@ The `$hostFile` variable holds the the path to the currently loaded host file. B
 Get-HostFilePath
 ```
 
-The `$hostFileObject` variable is the custom PowerShell Object `[HostFile]` representing the Windows Hosts file. This is what gets modified when updating, adding or removing entries via the various commands. Once all changes are complete then they are saved (written) back to the Hosts file using the `Save-HostFileObject` command.
+The `$hostFileObject` variable is the custom PowerShell Object representing the Windows Hosts file. This is what gets modified when updating, adding or removing entries via the various commands. Once all changes are complete then they are saved (written) back to the Hosts file using the `Save-HostFileObject` command.
 
 ```PowerShell
 # get the current 'HostFileObject'
 Get-HostFileObject
 ```
 
-You can all see the value of either of these two variables by using the `Get-HostFileVariable` command and specifying the variable name. However, `Get-HostFile` and `Get-HostFilePath` will do the same thing as `Get-HostFileVariable hostFileObject`.
+You can see the value of either variables by using the `Get-HostFileVariable` command and specifying the variable name. However, `Get-HostFile` and `Get-HostFilePath` will do the same thing as `Get-HostFileVariable hostFileObject`.
 
 ```PowerShell
  Get-HostFileVariable hostFile
