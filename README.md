@@ -404,7 +404,6 @@ $entry.IPAddress = '192.168.2.2'
 
 ## Backing up and Restoring
 
-
 `Backup-HostFile`
 
 Backs up the HostFile.
@@ -412,4 +411,4 @@ Backs up the HostFile.
 
 `Restore-HostFile`
 
-This command is unfinished and won't do anyting.
+A command to restore the HostFile from backup. To be implemented.
