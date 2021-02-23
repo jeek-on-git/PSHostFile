@@ -4,7 +4,7 @@ A PowerShell Module for managing the Windows Host file. It provides a collection
 
 ## Overview
 
-The Windows' Hosts file stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve hostnames to IP Addresses.
+The Windows' Hosts file stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve host names to IP Addresses.
 
 The Host Entry uses a standard text format: `IPAddress Hostname # Comment`. Note, the comment is not mandatory and only the first two parts, `IPAddress` and `HostName` are required.
 
@@ -102,7 +102,7 @@ Get-HostFile
 
 ## `EntryType`
 
-When the hosts file is loaded, each line of the file is read and designated an 'Entry Type' based on pattern of the text.
+When the hosts file is loaded, each line of the file is read and designated an `EntryType` based on pattern of the text.
 
 There are 5 different Entry Types (`EntryType`) defined, these are;
 
@@ -407,35 +407,9 @@ $entry.IPAddress = '192.168.2.2'
 
 `Backup-HostFile`
 
+Backs up the HostFile.
 ## Restoring
 
 `Restore-HostFile`
 
-## Commands
-
-Returns the Windows Host File Object.
-
-+ Add-HostFileEntry
-+ Clear-HostFileEntry
-+ Clear-HostFileObject
-+ Clear-HostFilePath
-+ Convert-HostFileObjectToString
-+ Get-HostFile
-+ Get-HostFileEntry
-+ Get-HostFileLineType
-+ Get-HostFilePath
-+ Get-HostFileVariable
-+ New-FileName
-+ New-HostFileEntry
-+ New-HostFileLineObject
-+ New-HostFileObject
-+ New-HostFilePath
-+ Remove-HostFileEntry
-+ Restore-HostFile
-+ Save-HostFileObject
-+ Set-HostFileEntry
-+ Test-HostFileVariable
-+ Test-IsAdmin
-+ Test-Variable
-+ Update-HostFileObject
-
+This command is unfinished and won't do anyting.
