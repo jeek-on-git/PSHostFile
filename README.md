@@ -1,4 +1,4 @@
-# HostFile
+# PSHostFile
 
 A PowerShell Module for managing the Windows Host file. It provides a collection of custom functions making it easy to add, remove and update hosts file entries using the familiar PowerShell syntax.
 
@@ -16,36 +16,36 @@ Start by installing the module.
 
 ```PowerShell
 # all users - requires local administrator rights
-Install-Module HostFile -Scope AllUsers
+Install-Module PSHostFile -Scope AllUsers
 
 # current user
-Install-Module HostFile -Scope CurrentUser
+Install-Module PSHostFile -Scope CurrentUser
 ```
 
 Import the module for use
 
 ```PowerShell
 # import the module
-Import-Module HostFile
+Import-Module PSHostFile
 ```
 
 Get the module's details.
 
 ```PowerShell
-Get-Module HostFile
+Get-Module PSHostFile
 ```
 
 List all of the module's commands.
 
 ```PowerShell
-Get-Command -Module HostFile
+Get-Command -Module PSHostFile
 ```
 
 To remove the module, run the following,
 
 ```PowerShell
-Get-Module HostFile | Remove-Module
-Uninstall-Module HostFile -AllVersions -Confirm:$false
+Get-Module PSHostFile | Remove-Module
+Uninstall-Module PSHostFile -AllVersions -Confirm:$false
 ```
 
 ## Getting Started
