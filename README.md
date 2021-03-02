@@ -1,16 +1,16 @@
 # PSHostFile
 
-A PowerShell Module for managing the Windows Host file. It provides a collection of custom functions making it easy to add, remove and update hosts file entries using the familiar PowerShell syntax.
+A PowerShell Module for managing the Windows Hosts file. It provides a collection of custom functions making it easy to add, remove and update hosts file entries using the familiar PowerShell Verb-Noun syntax.
 
 ## Overview
 
-The Windows' Hosts file stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve host names to IP Addresses.
+The Windows Hosts file stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve names to IP Addresses.
 
-The Host Entry uses a standard text format: `IPAddress Hostname # Comment`. Note, the comment is not mandatory and only the first two parts, `IPAddress` and `HostName` are required.
+A Host Entry uses a standard text format: `IPAddress Hostname # Comment`. The `# comment` is not mandatory and only the first the `IPAddress` and `HostName` are required.
 
-This module has been tested on both Windows PowerShell (5.1) and PowerShell (7). Given this is modifying the Windows' Hosts file it will not work on Linux or Mac.
+This module has been tested on both Windows PowerShell (5.1) and PowerShell (7). Given this is modifying the Windows Hosts file it will not work on Linux or Mac.
 
-### The Basics
+## The Basics
 
 Start by installing the module.
 
@@ -41,6 +41,8 @@ List all of the module's commands.
 Get-Command -Module PSHostFile
 ```
 
+## Uninstall
+
 To remove the module, run the following,
 
 ```PowerShell
@@ -61,9 +63,12 @@ ghf
 
 > This creates two script level variables, `$hostFile` and `$hostFileObject`.
 
-The `$hostFile` variable holds the the path to the currently loaded host file. By default this is the host file located in the `C:\Windows\System32\Drivers\etc directory`, however, you can specify a different hosts file, e.g. `\\server\C$\System32\Drivers\etc\hosts`.
+The `$hostFile` variable holds the the path to the currently loaded host file. By default this is the host file located in the `C:\Windows\System32\Drivers\etc directory`, however, you can specify a different hosts file, e.g. `\\server\c$\System32\Drivers\etc\hosts`.
 
 ```PowerShell
+# specify path to different hosts file.
+New-HostFilePath "\\server\c`$\System32\Drivers\etc\hosts"
+
 # get the current 'HostFilePath'
 Get-HostFilePath
 ```
@@ -72,6 +77,8 @@ The `$hostFileObject` variable is the custom PowerShell Object representing the 
 
 ```PowerShell
 # get the current 'HostFileObject'
+Get-HostFile
+# or
 Get-HostFileObject
 ```
 
@@ -112,9 +119,9 @@ There are 5 different Entry Types (`EntryType`) defined, these are;
 
 `Blank` : This is a Blank line and is used to preserve spacing. Blank lines can also be added and/or removed as necessary.
 
-`HostEntry` : This is the IPAddress and the Hostname entry. It may also contain a "# *comment*" at the end of the line.
+`HostEntry` : This is the IPAddress and the Hostname entry. It may also contain a `# comment` at the end of the line.
 
-`Commented` : Any HostEntry line that has been "commented out" and starts with "# *IPAddress*", i.e. `"# 192.168.0.1    hostname    # comment"`
+`Commented` : Any HostEntry line that has been "commented out" and starts with `# IPAddress`, i.e. `"# 192.168.0.1    hostname    # comment"`
 
 This is an example of a `HostFileObject` object after being loaded. As this is a PowerShell object it makes it very easy to filter, add, remove and modify entries.
 
@@ -166,7 +173,7 @@ The commands have been logically grouped. Use the Get-Help to get further detail
 
 Typically when working with the host file your workflow will follow a similar pattern
 
-+ Load the hosts file
++ Load the Hosts File
 + View, and filter, the hosts file entries
 + Modify (Add, Remove or Update) the hosts file entries
 + Backup the hosts file
