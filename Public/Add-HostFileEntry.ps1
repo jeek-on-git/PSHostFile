@@ -33,17 +33,19 @@ function Add-HostFileEntry {
     begin {
 
         try {
-            $null = Test-HostFileVariable HostFileObject -ErrorAction Stop
+            $null = Test-HostFileVariable -HostFileObject -ErrorAction Stop
         }
         catch {
             throw $_.Exception.Message
         }
 
+        $object = Get-HostFile
+
     }
 
     process {
 
-        if (!($hostFileObject -contains $hostFileEntry)) {
+        if ($script:hostFileObject -NotContains $hostFileEntry) {
             $script:hostFileObject.Add($hostFileEntry)
             Return $true
         }

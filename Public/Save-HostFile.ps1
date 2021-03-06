@@ -1,4 +1,4 @@
-function Save-HostFileObject {
+function Save-HostFile {
     <#
     .SYNOPSIS
     Updates (overwrites) the 'host' file with the values from the 'HostFileObject' variable.

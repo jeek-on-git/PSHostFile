@@ -111,28 +111,38 @@ function New-HostFileEntry {
 
         if ($PSCmdlet.ParameterSetName -eq 'HostEntry') {
 
+            $entryType = 'HostEntry'
+
             if ($PSBoundParameters.ContainsKey('Comment')) {
-                if ($comment -match "^#") {
-                    $comment = $comment -replace("#","# ")
-                }
-                else {
-                    $comment = "# $comment"
-                }
+
+                $comment = $($comment -replace '#').Trim()
+                $comment = "# $comment"
+
+            }
+
+            if ($PSBoundParameters.ContainsKey('IPAddress')) {
+
+                $ipAddress = $($ipAddress -replace '#').Trim()
+
+            }
+
+            if ($PSBoundParameters.ContainsKey('Hostname')) {
+
+                $hostname = $hostname.Trim()
+
             }
 
             if ($commented) {
-                if ($ipAddress -match "^#") {
-                    $ipAddress = $ipAddress -replace("#","# ")
-                }
-                else {
-                    $ipAddress = "# $ipAddress"
-                }
+
+                $ipAddress = "# $ipAddress"
+                $entryType = 'Commented'
+
             }
 
             [PSCustomObject] @{
                 PSTypeName = 'HostFile'
                 LineNumber = $lineNumber
-                EntryType  = 'HostEntry'
+                EntryType  = $entryType
                 ipAddress  = $ipAddress
                 Hostname   = $hostname
                 Comment    = $comment

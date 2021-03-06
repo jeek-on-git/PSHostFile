@@ -7,22 +7,22 @@ Describe "HostFile Tests" {
         Clear-HostFileObject
         Clear-HostFilePath
 
-
     } # beforeAll
 
     Context "Tests - Host File Path" {
 
-        It "Test - HostFile Path with Default Path" {
+        It "Test - HostFile Path - Default Path" {
             New-HostFilePath
             Get-HostFilePath | Should -Be 'C:\Windows\System32\Drivers\etc\hosts'
         }
+
         It "Test - HostFilePath variable is True" {
             Test-HostFileVariable -hostFile | Should -Be $true
         }
 
     }
 
-    Context "Test - HostFile with non-default path" {
+    Context "Test - HostFile - specified path" {
 
         BeforeEach {
 

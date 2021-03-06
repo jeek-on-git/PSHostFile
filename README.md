@@ -10,7 +10,7 @@ A host entry uses a standard text format: `IPAddress Hostname # Comment`. The `#
 
 This module has been tested on both Windows PowerShell (5.1) and PowerShell (7). Given this is modifying the Windows Hosts File it will not work on Linux or Mac.
 
-## The Basics
+## Getting Started
 
 Start by installing the module.
 
@@ -22,7 +22,7 @@ Install-Module PSHostFile -Scope AllUsers
 Install-Module PSHostFile -Scope CurrentUser
 ```
 
-Import the module for use
+Once installed, import the module
 
 ```PowerShell
 # import the module
@@ -50,9 +50,9 @@ Get-Module PSHostFile | Remove-Module
 Uninstall-Module PSHostFile -AllVersions -Confirm:$false
 ```
 
-## Getting Started
+## The Basics
 
-Start by loading the Hosts File into memory and creating a `HostFileObject` object using the `Get-HostFile` command.
+Start by loading the Hosts File into memory by creating a `HostFileObject` object using the `Get-HostFile` command.
 
 ```PowerShell
 Get-HostFile
@@ -61,14 +61,18 @@ Get-HostFile
 ghf
 ```
 
-> This creates two script level variables, `$hostFile` and `$hostFileObject`.
+This creates two script level variables, `$hostFile` and `$hostFileObject`.
 
 The `$hostFile` variable holds the the path to the currently loaded Hosts File. By default this is the Hosts File located in the `C:\Windows\System32\Drivers\etc directory`, however, you can specify a different hosts file, e.g. `\\server\c$\System32\Drivers\etc\hosts`.
 
 ```PowerShell
 # specify path to different hosts file.
 New-HostFilePath "\\server\c`$\System32\Drivers\etc\hosts"
+```
 
+You can interact with either variable by using the `Get-HostFileVariable -HostFile` or `Get-HostFileVariable -HostFileObject`. Additionally the `Get-HostFile` and `Get-HostFilePath` do the same thing.
+
+```PowerShell
 # get the current 'HostFilePath'
 Get-HostFilePath
 ```
@@ -419,3 +423,7 @@ Backs up the HostFile.
 `Restore-HostFile`
 
 A command to restore the HostFile from backup. To be implemented.
+
+## Tests
+
+Pester tests have been created to test functionality. Requires Pester 5.1.1.

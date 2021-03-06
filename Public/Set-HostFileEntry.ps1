@@ -45,10 +45,8 @@ function Set-HostFileEntry {
         [Parameter(Mandatory,ValueFromPipeline)]
         [PSTypeName('HostFile')]$hostFileEntry,
 
-        #[Parameter(Mandatory)]
         [string]$ipAddress,
 
-        #[Parameter(Mandatory)]
         [string]$hostname,
 
         [string]$comment,
@@ -74,33 +72,45 @@ function Set-HostFileEntry {
         foreach ($entry in $hostFileEntry) {
 
             if ($PSBoundParameters.ContainsKey('ipAddress')) {
+                $ipAddress = $ipAddress.Trim()
                 $entry.ipAddress = $ipAddress
             }
             else {
-                $entry.ipAddress = $entry.ipAddress
+                $ipAddress = $entry.ipAddress
+                $entry.ipAddress = $ipAddress.Trim()
             }
 
             if ($commented) {
                 if ($entry.ipAddress -match "^#") {
-                    $entry.ipAddress = $ipAddress -replace("#","# ")
+                    $entry.ipAddress = $($ipAddress -replace '#').Trim()
                 }
                 else {
-                    $entry.ipAddress = "# $($entry.ipAddress)"
+                    $ipAddress = $($ipAddress -replace '#').Trim()
+                    $entry.ipAddress = "# $ipAddress"
                 }
             }
 
             if ($PSBoundParameters.ContainsKey('hostname')) {
-                $entry.hostname = $hostname
+                $entry.hostname = $hostname.trim()
             }
             else {
-                $entry.hostname = $entry.hostname
+                $hostname = $entry.hostname
+                $entry.hostname = $hostname.trim()
             }
 
             if ($PSBoundParameters.ContainsKey('comment')) {
-                $entry.comment = $comment
+
+                # remove the # and trim any whitespace from the start of the string
+                $comment = $($comment -replace '#').Trim()
+                $entry.comment = $comment = "# $comment"
+
             }
             else {
-                $entry.comment = $entry.comment
+
+                # remove the # and trim any whitespace from the start of the string
+                $comment = $($entry.comment -replace '#').Trim()
+                $entry.comment = $comment = "# $comment"
+
             }
 
             try {

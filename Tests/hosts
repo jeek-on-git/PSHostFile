@@ -23,6 +23,10 @@
 # comment
 #comment
 
+1.1.1.1     Pester      # Pester
+# 1.1.1.1     Pester      # Pester
+# Pester
+
 192.168.100.10	server.host.local
 192.168.100.10	server.host.local	singletab singletab comment
 192.168.100.10	server.host.local	#singletab hashsingletab comment
