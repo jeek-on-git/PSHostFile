@@ -1,14 +1,14 @@
 # PSHostFile
 
-A PowerShell Module for managing the Windows Hosts file. It provides a collection of custom functions making it easy to add, remove and update hosts file entries using the familiar PowerShell Verb-Noun syntax.
+A PowerShell Module for managing the Windows Hosts File. It provides a collection of custom functions making it easy to add, remove and update Hosts File entries using the familiar PowerShell Verb-Noun syntax.
 
 ## Overview
 
-The Windows Hosts file stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve names to IP Addresses.
+The Windows Hosts File stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve names to IP Addresses.
 
-A Host Entry uses a standard text format: `IPAddress Hostname # Comment`. The `# comment` is not mandatory and only the first the `IPAddress` and `HostName` are required.
+A host entry uses a standard text format: `IPAddress Hostname # Comment`. The `# comment` is optional while the `IPAddress` and `HostName` are mandatory.
 
-This module has been tested on both Windows PowerShell (5.1) and PowerShell (7). Given this is modifying the Windows Hosts file it will not work on Linux or Mac.
+This module has been tested on both Windows PowerShell (5.1) and PowerShell (7). Given this is modifying the Windows Hosts File it will not work on Linux or Mac.
 
 ## The Basics
 
@@ -52,7 +52,7 @@ Uninstall-Module PSHostFile -AllVersions -Confirm:$false
 
 ## Getting Started
 
-Start by loading the Hosts file into memory and creating a `HostFileObject` object using the `Get-HostFile` command.
+Start by loading the Hosts File into memory and creating a `HostFileObject` object using the `Get-HostFile` command.
 
 ```PowerShell
 Get-HostFile
@@ -63,7 +63,7 @@ ghf
 
 > This creates two script level variables, `$hostFile` and `$hostFileObject`.
 
-The `$hostFile` variable holds the the path to the currently loaded host file. By default this is the host file located in the `C:\Windows\System32\Drivers\etc directory`, however, you can specify a different hosts file, e.g. `\\server\c$\System32\Drivers\etc\hosts`.
+The `$hostFile` variable holds the the path to the currently loaded Hosts File. By default this is the Hosts File located in the `C:\Windows\System32\Drivers\etc directory`, however, you can specify a different hosts file, e.g. `\\server\c$\System32\Drivers\etc\hosts`.
 
 ```PowerShell
 # specify path to different hosts file.
@@ -113,7 +113,7 @@ When the hosts file is loaded, each line of the file is read and designated an `
 
 There are 5 different Entry Types (`EntryType`) defined, these are;
 
-`Header`: The first 22 rows of the host file are flagged as a `Header` Type; any line that starts with a "*# text*". This allows for the 'Header' information of the hosts file to be preserved.
+`Header`: The first 22 rows of the Hosts File are flagged as a `Header` Type; any line that starts with a "*# text*". This allows for the 'Header' information of the hosts file to be preserved.
 
 `Comment` : This is the same as the Header type, using the same "# *text*" pattern, however, anything after the 22nd row is flagged as a comment. This allows for inline comments to be add and/or removed.
 
@@ -171,7 +171,7 @@ Line EntryType IPAddress        Hostname          Comment
 
 The commands have been logically grouped. Use the Get-Help to get further details and examples.
 
-Typically when working with the host file your workflow will follow a similar pattern
+Typically when working with the Hosts File your workflow will follow a similar pattern
 
 + Load the Hosts File
 + View, and filter, the hosts file entries
@@ -179,7 +179,7 @@ Typically when working with the host file your workflow will follow a similar pa
 + Backup the hosts file
 + Save changes back to the hosts file
 
-### Managing host file object
+### Managing Hosts File object
 
 Use the following set of commands to manage the `$hostFileObject`.
 
@@ -191,23 +191,23 @@ Use the following set of commands to manage the `$hostFileObject`.
 |`Save-HostFileObject`|Saves the HostFileObject, and any changes, back to disk|
 |||
 
-### Managing host file entries
+### Managing Hosts File entries
 
-Use the following set of commands to add, remove, and update host file entries.
+Use the following set of commands to add, remove, and update Hosts File entries.
 
 |Command|Description|
 |-----|-----|
 |`Get-HostFileEntry`|Returns the specified `HostFileEntry`|
-|`New-HostFileEntry`|Creates a new `HostFileEntry` object. Used for adding and/or removing a host file entry|
+|`New-HostFileEntry`|Creates a new `HostFileEntry` object. Used for adding and/or removing a Hosts File entry|
 |`Add-HostFileEntry`|Adds a new `HostFileEntry` to the `HostFileObject`.|
 |`Remove-HostFileEntry`|Removes the specified `HostFileEntry` from the `hostFileObject`|
 |`Set-HostFileEntry`|Modifies the specified `HostFileEntry`|
-|`Clear-HostFileEntry`|Clears all Host File Entries, i.e. removes everything except the header information|
+|`Clear-HostFileEntry`|Clears all Hosts File Entries, i.e. removes everything except the header information|
 |||
 
 ### Managing the Hosts File
 
-The following set of commands are used to manage the Host File.
+The following set of commands are used to manage the Hosts File.
 
 |Command|Description|
 |-----|-----|
@@ -216,9 +216,9 @@ The following set of commands are used to manage the Host File.
 |`Restore-HostFile`|Restores the specified Hosts file from backup|
 |||
 
-### Managing Host File Variables
+### Managing Hosts File Variables
 
-The following set of commands are used to manage the Host File variables.
+The following set of commands are used to manage the Hosts File variables.
 
 |Command|Description|
 |-----|-----|
@@ -239,7 +239,7 @@ Hidden commands
 |`Get-HostFileLineType`|Returns the 'line' type|
 |`Get-HostFileEntryType`|Returns the `HostFileObject`'s type|
 |`Convert-HostFileObjectToString`|Coverts a `HostFileObject` to a String|
-|`New-HostFileLineObject`|Creates a new Host File Entry `[HostFile]`|
+|`New-HostFileLineObject`|Creates a new Hosts File Entry `[HostFile]`|
 |`Convert-StringToBlank`|Converts a string to `HostFile` Object EntryType `Blank`|
 |`Convert-StringToComment`|Converts a string to `HostFile` Object EntryType `Comment`|
 |`Convert-StringToCommented`|Converts a string to `HostFile` Object EntryType `Commented`|
@@ -249,7 +249,7 @@ Hidden commands
 |||
 
 ### Filtering
-Because the host file is now an PowerShell Object, filtering becomes very easy.
+Because the Hosts File is now an PowerShell Object, filtering becomes very easy.
 
 Use the `Get-HostFileEntry` command.
 
@@ -295,14 +295,14 @@ Get-HostFile | Where-Object line -match $lines
 
 There are a couple of ways to update, add and remove entries.
 
-The first is by creating a custom "Host File Entry" object using the `New-HostFileEntry` command. The result of this command is used to add a new entry to the `$HostFileObject`. This is used in combination with the `Add-HostFileEntry`.
+The first is by creating a custom "Hosts File Entry" object using the `New-HostFileEntry` command. The result of this command is used to add a new entry to the `$HostFileObject`. This is used in combination with the `Add-HostFileEntry`.
 
 ### Add Host Entry
 
 There are a number of ways to add entries.
 
 ```PowerShell
-# this creates a new Host File Entry
+# this creates a new Hosts File Entry
 $entry = New-HostFileEntry -entryType HostEntry -ipAddress 192.168.1.1 -hostname router -comment 'Comment'
 
 # then add the $entry using the Add-HostFileEntry command.
