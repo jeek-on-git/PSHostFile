@@ -2,7 +2,10 @@ Describe "Set-HostFileEntry Tests" {
 
     BeforeAll {
 
-        Import-Module "..\PSHostFile.psd1" -Force
+        # Import-Module "..\PSHostFile.psd1" -Force
+        $root = ([System.IO.FileInfo]$PSScriptRoot).Directory.FullName
+        $path = Join-Path $root "PSHostFile.psd1"
+        Import-Module $path -force
 
         Clear-HostFileObject
         Clear-HostFilePath
@@ -30,7 +33,7 @@ Describe "Set-HostFileEntry Tests" {
             Get-HostFileEntry 26 | Select-Object -ExpandProperty HostName | Should -be 'PesterTest'
         }
 
-        It "Test - Removing Spaces from <_>" -foreach @(
+        It "Test - Testing for Spaces - <_>" -foreach @(
             '#Pester Comment'
             '# Pester Comment '
             '#  Pester Comment  '
@@ -51,7 +54,7 @@ Describe "Set-HostFileEntry Tests" {
             Get-HostFileEntry 26 | Select-Object -ExpandProperty Comment | Should -be '# Pester Comment'
         }
 
-        It "Test - Removing Spaces from <_>" -foreach @(
+        It "Test - Testing for Spaces - <_>" -foreach @(
             '1.1.1.1'
             ' 1.1.1.1 '
             '  1.1.1.1  '
@@ -62,7 +65,7 @@ Describe "Set-HostFileEntry Tests" {
             Get-HostFileEntry 26 | Select-Object -ExpandProperty IPAddress | Should -be '1.1.1.1'
         }
 
-        It "Test - Removing Spaces from <_>" -foreach @(
+        It "Test - Testing for Spaces - <_>" -foreach @(
             'hostname'
             ' hostname '
             '  hostname  '
@@ -73,7 +76,7 @@ Describe "Set-HostFileEntry Tests" {
             Get-HostFileEntry 26 | Select-Object -ExpandProperty HostName | Should -be 'hostname'
         }
 
-        It "Test - Removing Spaces from <_>" -foreach @(
+        It "Test - Testing for Spaces - <_>" -foreach @(
             'hostname.local'
             ' hostname.local '
             '  hostname.local  '
@@ -84,7 +87,7 @@ Describe "Set-HostFileEntry Tests" {
             Get-HostFileEntry 26 | Select-Object -ExpandProperty HostName | Should -be 'hostname.local'
         }
 
-        It "Test - Removing Spaces from <_>" -foreach @(
+        It "Test - Testing for Spaces - <_>" -foreach @(
             'www.test.com'
             ' www.test.com '
             '  www.test.com  '

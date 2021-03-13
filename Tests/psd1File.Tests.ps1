@@ -6,6 +6,8 @@ Describe "HostFile Tests" {
         BeforeAll {
 
             $psdFile = "..\PSHostFile.psd1"
+            $root = ([System.IO.FileInfo]$PSScriptRoot).Directory.FullName
+            $psdFile = Join-Path $root "PSHostFile.psd1"
 
 
         } # beforeAll

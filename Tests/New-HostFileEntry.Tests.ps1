@@ -3,7 +3,10 @@ Describe "New-HostFileEntry" {
 
     BeforeAll {
 
-        Import-Module "..\PSHostFile.psd1" -Force
+        # Import-Module "..\PSHostFile.psd1" -Force
+        $root = ([System.IO.FileInfo]$PSScriptRoot).Directory.FullName
+        $path = Join-Path $root "PSHostFile.psd1"
+        Import-Module $path -force
 
         $file = "$PSScriptRoot\hosts"
         New-HostFilePath $file
@@ -26,7 +29,7 @@ Describe "New-HostFileEntry" {
             $entry | Get-HostFileEntryType | Should -Be 'Blank'
         }
 
-        It "Test - IPAddress removing space from <_> " -foreach @(
+        It "Test - Testing 'IPAddress' for spaces - <_>" -foreach @(
             '1.1.1.1'
             ' 1.1.1.1 '
             '  1.1.1.1  '
@@ -41,7 +44,7 @@ Describe "New-HostFileEntry" {
             New-HostFileEntry -ipAddress $_ -hostname 'Pester' | Select-Object -ExpandProperty IPAddress | Should -be '1.1.1.1'
         }
 
-        It "Test - HostName removing space from <_> " -foreach @(
+        It "Test - Testing 'Hostname' for spaces - <_> " -foreach @(
             'hostname'
             ' hostname '
             '  hostname  '
@@ -51,7 +54,7 @@ Describe "New-HostFileEntry" {
             New-HostFileEntry -ipAddress '1.1.1.1' -hostname $_ | Select-Object -ExpandProperty HostName | Should -be 'hostname'
         }
 
-        It "Test - HostName removing space from <_> " -foreach @(
+        It "Test - Testing 'Hostname' for spaces -  <_> " -foreach @(
             'hostname.local'
             ' hostname.local '
             '  hostname.local  '
@@ -60,7 +63,7 @@ Describe "New-HostFileEntry" {
         ) {
             New-HostFileEntry -ipAddress '1.1.1.1' -hostname $_ | Select-Object -ExpandProperty HostName | Should -be 'hostname.local'
         }
-        It "Test - HostName removing space from <_> " -foreach @(
+        It "Test - Testing 'Hostname' for spaces - <_> " -foreach @(
             'www.test.com'
             ' www.test.com '
             '  www.test.com  '
@@ -70,7 +73,7 @@ Describe "New-HostFileEntry" {
             New-HostFileEntry -ipAddress '1.1.1.1' -hostname $_ | Select-Object -ExpandProperty HostName | Should -be 'www.test.com'
         }
 
-        It "Test - Commented - Hash is added to IPAddress - <_> " -foreach @(
+        It "Test - Testing 'Commented' for spaces - <_> " -foreach @(
             '1.1.1.1'
             ' 1.1.1.1 '
             '  1.1.1.1  '

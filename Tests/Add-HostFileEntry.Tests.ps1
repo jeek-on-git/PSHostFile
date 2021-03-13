@@ -3,7 +3,10 @@ Describe "Add-HostFileEntry" {
 
     BeforeAll {
 
-        Import-Module "..\PSHostFile.psd1" -Force
+        # Import-Module ".\PSHostFile.psd1" -Force
+        $root = ([System.IO.FileInfo]$PSScriptRoot).Directory.FullName
+        $path = Join-Path $root "PSHostFile.psd1"
+        Import-Module $path -force
 
         $file = "$PSScriptRoot\hosts"
         New-HostFilePath $file
