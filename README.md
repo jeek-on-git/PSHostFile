@@ -1,14 +1,17 @@
 # PSHostFile
 
-A PowerShell Module for managing the Windows Hosts File. It provides a collection of custom functions making it easy to add, remove and update Hosts File entries using the familiar PowerShell Verb-Noun syntax.
+A PowerShell Module for managing the Windows Hosts File. It provides a collection of custom functions making it easy to add, remove and update Hosts File entries using the familiar PowerShell syntax.
 
 ## Overview
 
 The Windows Hosts File stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve names to IP Addresses.
 
-A host entry uses a standard text format: `IPAddress Hostname # Comment`. The `# comment` is optional while the `IPAddress` and `HostName` are mandatory.
+A host entry uses a standard text format: `IPAddress Hostname`. It may also in a `# comment` after the host name but this is optional. `IPAddress` and `HostName` are mandatory.
 
-This module has been tested on both Windows PowerShell (5.1) and PowerShell (7). Given this is modifying the Windows Hosts File it will not work on Linux or Mac.
+## Versions
+
+This module has been tested on both Windows PowerShell (5.1) and PowerShell (7).
+It has not been tested on Linux or Mac.
 
 ## Getting Started
 
