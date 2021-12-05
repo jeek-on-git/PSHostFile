@@ -1,16 +1,16 @@
 function Get-HostFileVariable {
     <#
     .SYNOPSIS
-    Short description
+    Returns either the HostFile or HostFileObject variable
 
     .DESCRIPTION
-    Long description
-
-    .PARAMETER var
-    Parameter description
+    Returns either the HostFile or HostFileObject variable
 
     .EXAMPLE
-    An example
+    Get-HostFileVariable -hostFile
+
+    .EXAMPLE
+    Get-HostFileVariable -hostFileObject
 
     .NOTES
     Author: Garry O'Neill

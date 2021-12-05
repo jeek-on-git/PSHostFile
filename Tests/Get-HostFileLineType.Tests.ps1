@@ -1,20 +1,14 @@
-
 Describe "HostFile Tests" {
-
     BeforeAll {
-
         # Import-Module "..\PSHostFile.psd1" -Force
         $root = ([System.IO.FileInfo]$PSScriptRoot).Directory.FullName
         $path = Join-Path $root "PSHostFile.psd1"
         Import-Module $path -force
-
         Clear-HostFileObject
         Clear-HostFilePath
-
-    } # beforeAll
+    }
 
     Context "Tests - Get-HostFileLineType" {
-
         It "Test - Get-HostFileLineType - Blanks" -foreach @(
             @{ Blank = ''}
             @{ Blank = ' '}
@@ -43,14 +37,12 @@ Describe "HostFile Tests" {
             @{ HostEntry = '172.16.0.0    ServerName    # Comment'}) {
             Get-HostFileLineType $hostEntry | Should -Be 'HostEntry'
         }
-
         It "Test - Get-HostFileLineType - Commented" -ForEach @(
             @{ Commented = '# 127.0.0.1'}
             @{ Commented = '# 10.21.21.21   server.local'}
             @{ Commented = '# 10.21.21.21   server.local # comments'}) {
             Get-HostFileLineType $commented | Should -Be 'Commented'
         }
-
         It "Test - Get-HostFileLineType - Comment" -ForEach @(
             @{ comment = '#'}
             @{ comment = '# '}
@@ -61,7 +53,5 @@ Describe "HostFile Tests" {
             @{ comment = '# text text'}) {
             Get-HostFileLineType $comment | Should -Be 'Comment'
         }
-
-    } # context
-
-} # describe
+    }
+}

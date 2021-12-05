@@ -79,6 +79,7 @@ FunctionsToExport = @(
     'Get-HostFile'
     'Get-HostFileBackups'
     'Get-HostFileEntry'
+    'Get-HostFileHeaderCount'
     'Get-HostFilePath'
     'Get-HostFileEntryType'
     'Get-HostFileLineType'

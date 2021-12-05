@@ -1,0 +1,168 @@
+# Copyright (c) 1993-2009 Microsoft Corp.
+
+192.168.100.10	server.host.local
+192.168.100.10	server.host.local	singletab singletab comment
+192.168.100.10	server.host.local	#singletab hashsingletab comment
+192.168.100.10	server.host.local	# singletab hash singletab comment
+192.168.100.10	server.host.local		singletab doubletab comment
+192.168.100.10	server.host.local		#singletab hashdoubletab comment
+192.168.100.10	server.host.local		# singletab hash doubletab comment
+
+192.168.100.10		server.host.local
+192.168.100.10		server.host.local	doubletab singletab comment
+192.168.100.10		server.host.local	#doubletab hashsingletab comment
+192.168.100.10		server.host.local	# doubletab hash singletab comment
+192.168.100.10		server.host.local		doubletab doubletab comment
+192.168.100.10		server.host.local		#doubletab hashdoubletab comment
+192.168.100.10		server.host.local		# doubletab hash doubletab comment
+
+192.168.100.10    server.host.local
+192.168.100.10    server.host.local	space singletab comment
+192.168.100.10    server.host.local	#spacetab hashsingletab comment
+192.168.100.10    server.host.local	# space hash singletab comment
+192.168.100.10    server.host.local		space doubletab comment
+192.168.100.10    server.host.local		#space hashdoubletab comment
+192.168.100.10    server.host.local		# space hash doubletab comment
+192.168.100.10    server.host.local    space space comment
+192.168.100.10    server.host.local    #space hashspace comment
+192.168.100.10    server.host.local    # space hash space comment
+
+192.168.100.10	server
+192.168.100.10	server	singletab singletab comment
+192.168.100.10	server	#singletab hashsingletab comment
+192.168.100.10	server	# singletab hash singletab comment
+192.168.100.10	server		singletab doubletab comment
+192.168.100.10	server		#singletab hashdoubletab comment
+192.168.100.10	server		# singletab hash doubletab comment
+
+192.168.100.10		server
+192.168.100.10		server	doubletab singletab comment
+192.168.100.10		server	#doubletab hashsingletab comment
+192.168.100.10		server	# doubletab hash singletab comment
+192.168.100.10		server		doubletab doubletab comment
+192.168.100.10		server		#doubletab hashdoubletab comment
+192.168.100.10		server		# doubletab hash doubletab comment
+
+192.168.100.10    server
+192.168.100.10    server	space singletab comment
+192.168.100.10    server	#spacetab hashsingletab comment
+192.168.100.10    server	# space hash singletab comment
+192.168.100.10    server		space doubletab comment
+192.168.100.10    server		#space hashdoubletab comment
+192.168.100.10    server		# space hash doubletab comment
+192.168.100.10    server    space space comment
+192.168.100.10    server    #space hashspace comment
+192.168.100.10    server    # space hash space comment
+
+# comment
+#comment
+
+#192.168.100.10	server.host.local
+#192.168.100.10	server.host.local	singletab singletab comment
+#192.168.100.10	server.host.local	#singletab hashsingletab comment
+#192.168.100.10	server.host.local	# singletab hash singletab comment
+#192.168.100.10	server.host.local		singletab doubletab comment
+#192.168.100.10	server.host.local		#singletab hashdoubletab comment
+#192.168.100.10	server.host.local		# singletab hash doubletab comment
+
+#192.168.100.10		server.host.local
+#192.168.100.10		server.host.local	doubletab singletab comment
+#192.168.100.10		server.host.local	#doubletab hashsingletab comment
+#192.168.100.10		server.host.local	# doubletab hash singletab comment
+#192.168.100.10		server.host.local		doubletab doubletab comment
+#192.168.100.10		server.host.local		#doubletab hashdoubletab comment
+#192.168.100.10		server.host.local		# doubletab hash doubletab comment
+
+#192.168.100.10    server.host.local
+#192.168.100.10    server.host.local	space singletab comment
+#192.168.100.10    server.host.local	#spacetab hashsingletab comment
+#192.168.100.10    server.host.local	# space hash singletab comment
+#192.168.100.10    server.host.local		space doubletab comment
+#192.168.100.10    server.host.local		#space hashdoubletab comment
+#192.168.100.10    server.host.local		# space hash doubletab comment
+#192.168.100.10    server.host.local    space space comment
+#192.168.100.10    server.host.local    #space hashspace comment
+#192.168.100.10    server.host.local    # space hash space comment
+
+#192.168.100.10	server
+#192.168.100.10	server	singletab singletab comment
+#192.168.100.10	server	#singletab hashsingletab comment
+#192.168.100.10	server	# singletab hash singletab comment
+#192.168.100.10	server		singletab doubletab comment
+#192.168.100.10	server		#singletab hashdoubletab comment
+#192.168.100.10	server		# singletab hash doubletab comment
+
+#192.168.100.10		server
+#192.168.100.10		server	doubletab singletab comment
+#192.168.100.10		server	#doubletab hashsingletab comment
+#192.168.100.10		server	# doubletab hash singletab comment
+#192.168.100.10		server		doubletab doubletab comment
+#192.168.100.10		server		#doubletab hashdoubletab comment
+#192.168.100.10		server		# doubletab hash doubletab comment
+
+#192.168.100.10    server
+#192.168.100.10    server	space singletab comment
+#192.168.100.10    server	#spacetab hashsingletab comment
+#192.168.100.10    server	# space hash singletab comment
+#192.168.100.10    server		space doubletab comment
+#192.168.100.10    server		#space hashdoubletab comment
+#192.168.100.10    server		# space hash doubletab comment
+#192.168.100.10    server    space space comment
+#192.168.100.10    server    #space hashspace comment
+#192.168.100.10    server    # space hash space comment
+
+# 192.168.100.10	server.host.local
+# 192.168.100.10	server.host.local	singletab singletab comment
+# 192.168.100.10	server.host.local	#singletab hashsingletab comment
+# 192.168.100.10	server.host.local	# singletab hash singletab comment
+# 192.168.100.10	server.host.local		singletab doubletab comment
+# 192.168.100.10	server.host.local		#singletab hashdoubletab comment
+# 192.168.100.10	server.host.local		# singletab hash doubletab comment
+
+# 192.168.100.10		server.host.local
+# 192.168.100.10		server.host.local	doubletab singletab comment
+# 192.168.100.10		server.host.local	#doubletab hashsingletab comment
+# 192.168.100.10		server.host.local	# doubletab hash singletab comment
+# 192.168.100.10		server.host.local		doubletab doubletab comment
+# 192.168.100.10		server.host.local		#doubletab hashdoubletab comment
+# 192.168.100.10		server.host.local		# doubletab hash doubletab comment
+
+# 192.168.100.10    server.host.local
+# 192.168.100.10    server.host.local	space singletab comment
+# 192.168.100.10    server.host.local	#spacetab hashsingletab comment
+# 192.168.100.10    server.host.local	# space hash singletab comment
+# 192.168.100.10    server.host.local		space doubletab comment
+# 192.168.100.10    server.host.local		#space hashdoubletab comment
+# 192.168.100.10    server.host.local		# space hash doubletab comment
+# 192.168.100.10    server.host.local    space space comment
+# 192.168.100.10    server.host.local    #space hashspace comment
+# 192.168.100.10    server.host.local    # space hash space comment
+
+# 192.168.100.10	server
+# 192.168.100.10	server	singletab singletab comment
+# 192.168.100.10	server	#singletab hashsingletab comment
+# 192.168.100.10	server	# singletab hash singletab comment
+# 192.168.100.10	server		singletab doubletab comment
+# 192.168.100.10	server		#singletab hashdoubletab comment
+# 192.168.100.10	server		# singletab hash doubletab comment
+
+# 192.168.100.10		server
+# 192.168.100.10		server	doubletab singletab comment
+# 192.168.100.10		server	#doubletab hashsingletab comment
+# 192.168.100.10		server	# doubletab hash singletab comment
+# 192.168.100.10		server		doubletab doubletab comment
+# 192.168.100.10		server		#doubletab hashdoubletab comment
+# 192.168.100.10		server		# doubletab hash doubletab comment
+
+# 192.168.100.10    server
+# 192.168.100.10    server	space singletab comment
+# 192.168.100.10    server	#spacetab hashsingletab comment
+# 192.168.100.10    server	# space hash singletab comment
+# 192.168.100.10    server		space doubletab comment
+# 192.168.100.10    server		#space hashdoubletab comment
+# 192.168.100.10    server		# space hash doubletab comment
+# 192.168.100.10    server    space space comment
+# 192.168.100.10    server    #space hashspace comment
+# 192.168.100.10    server    # space hash space comment
+
+

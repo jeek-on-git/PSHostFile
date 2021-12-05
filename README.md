@@ -8,7 +8,7 @@ The Windows HostFile stores 'host entries'; an IP Address and hostname combinati
 
 A host entry uses a standard text format: `IPAddress Hostname`. It may also contain a `# comment` after the host name but this is optional. `IPAddress` and `HostName` are mandatory.
 
-## Versions
+### Versions
 
 This module has been tested on both Windows PowerShell (5.1) and PowerShell (7) but not Linux or Mac.
 
@@ -54,7 +54,14 @@ Uninstall-Module PSHostFile -AllVersions -Confirm:$false
 
 ## The Basics
 
-Start by loading the HostFile into memory by using the `Get-HostFile` command. This creates two script level variables, `$hostFile` and `$hostFileObject`.
+Start by loading the HostFile into memory by using the `Get-HostFile` command.
+
+This creates two script level variables, `$hostFile` and `$hostFileObject`. These are module level variables and can be viewed using the following `Get-HostFileVariable` command.
+
+```PowerShell
+Get-HostFileVariable -hostFile
+Get-HostFileVariable -hostFileObject
+```
 
 The `$hostFile` variable holds the the path to the currently loaded HostFile. By default this is the HostFile located in the `C:\Windows\System32\Drivers\etc directory`.
 
@@ -86,7 +93,7 @@ Get-HostFilePath
 
 ## HostFileObject
 
-The `$hostFileObject` variable is the custom PowerShell Object representing the Windows HostFile loaded in memory. This is what gets modified when updating, adding or removing entries via the various commands. Once all changes are complete then they are saved (written) back to the HostFile using the `Save-HostFileObject` command.
+The `$hostFileObject` variable is the custom PowerShell Object representing the Windows HostFile loaded in memory. This is what gets modified when updating, adding or removing entries via the various commands. Once all changes are complete then they are saved (written) back to the Windows' HostFile using the `Save-HostFileObject` command.
 
 You can run the `Get-HostFile` command at any time to view the state of the `$hostFileObject`, and this is great way to view any changes that have been made. Changes aren't committed until they have been written back to the file. If you do make a mistake and want to start again, then use the `Clear-HostFileObject` to clear to `$hostFileObject`.
 
@@ -94,7 +101,7 @@ You can run the `Get-HostFile` command at any time to view the state of the `$ho
 # clear the 'HostFileObject' and then reload it
 Clear-HostFileObject
 
-# run the Get-HostFile cmdlet to load the HostFile into memory
+# run the Get-HostFile cmdlet to load the HostFile back into memory
 Get-HostFile
 ```
 
@@ -104,7 +111,6 @@ If you want to load a custom HostFile then use the `New-HostFilePath` command wi
 # this specifies a 'hosts' file from the '.\HostFile\hosts' file in the HostFile module directory.
 New-HostFilePath -hostFilePath "C:\Program Files\PowerShell\Modules\HostFile\Files\hosts"
 
-# which is then loaded when the Get-HostFile command is run
 Get-HostFile
 ```
 
@@ -114,9 +120,9 @@ When the HostFile is loaded, each line of the file is read and designated an `En
 
 There are 5 different Entry Types (`EntryType`) defined, these are;
 
-`Header`: The first 22 rows of the HostFile are flagged as a `Header` Type; any line that starts with a "*# text*". This allows for the 'Header' information of the HostFile to be preserved.
+`Header`: Generally the first (22 rows) of the HostFile are flagged as a `Header` Type, i.e. any line that starts with a "*# text*". This allows for the 'Header' information of the HostFile to be preserved.
 
-`Comment` : This is the same as the Header type, using the same "# *text*" pattern, however, anything after the 22nd row is flagged as a comment. This allows for inline comments to be add and/or removed.
+`Comment` : This is the same as the Header type, using the same "# *text*" pattern, however, anything after the initial rows is flagged as a comment. This allows for inline comments to be add and/or removed.
 
 `Blank` : This is a Blank line and is used to preserve spacing. Blank lines can also be added and/or removed as necessary.
 
@@ -421,3 +427,8 @@ Hidden commands
 |`Convert-StringToHostEntry`|Converts a string to `HostFile` Object EntryType `HostEntry`|
 |`Test-IsAdmin`|Test is the current user in a local administrator|
 |||
+
+## To Do
+
++ Detect if HostFile is non-standard
++ Add Backup and Restore commands

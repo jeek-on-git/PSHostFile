@@ -29,34 +29,27 @@ function New-HostFileLineObject {
 
     [CmdletBinding()]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         [AllowEmptyString()]
         [string]$hostFileLine,
 
         [int]$lineNumber
-
     )
 
     begin {
+        $headerCount = Get-HostFileHeaderCount -hostFile $(Get-HostFilePath)
     }
 
     process {
-
         foreach ($line in $hostFileLine) {
 
             $type = Get-HostFileLineType $line
 
             # header and comments have the same format, therefore any line after line 22 is a comment
             # conversely any line before is a header
-            if ($lineNumber -le 22 -and $type -match 'Comment|Commented|Blank') {
+            if ($lineNumber -le $headerCount -and $type -match 'Comment|Commented|Blank') {
                 $type = 'Header'
             }
-            <#
-            elseif ($lineNumber -le 22 -and $type -match 'Blank') {
-                $type = 'Header'
-            }
-            #>
 
             switch ($type) {
                 'Commented'   { Convert-StringToCommented -String $line -lineNumber $lineNumber                     }
@@ -66,13 +59,10 @@ function New-HostFileLineObject {
                 'Blank'       { Convert-StringToBlank -String $line -lineNumber $lineNumber                         }
                 Default       { Convert-StringToBlank -String $line -lineNumber $lineNumber                         }
             }
-
-        } # foreach
-
-    } # process
+        }
+    }
 
     end {
     }
-
 }
 
