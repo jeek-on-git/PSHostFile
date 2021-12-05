@@ -168,22 +168,8 @@ Line EntryType IPAddress        Hostname          Comment
   34 Commented # 192.168.100.10 server            # comment
 ```
 
-## Commands
-
-The commands have been logically grouped. Use the Get-Help to get further details and examples.
-
-Typically when working with the HostFile your workflow will follow a similar pattern
-
-+ Load the HostFile
-+ View, and filter, the HostFile entries
-+ Modify (Add, Remove or Update) the HostFile entries
-+ Backup the HostFile
-+ Save changes back to the HostFile
-
-### Managing `HostFileobject`
-
-
 ### Filtering
+
 Because the HostFile is now an PowerShell Object, filtering becomes very easy.
 
 Use the `Get-HostFileEntry` command.
@@ -358,6 +344,16 @@ Retores a HostFile from backup, `Restore-HostFile`
 Pester tests have been created to test functionality. Requires Pester 5.1.1. and above.
 
 ## Commands
+
+The commands have been logically grouped. Use the Get-Help to get further details and examples.
+
+Typically when working with the HostFile your workflow will follow a similar pattern
+
++ Load the HostFile
++ View, and filter, the HostFile entries
++ Modify (Add, Remove or Update) the HostFile entries
++ Backup the HostFile
++ Save changes back to the HostFile
 
 Use the following set of commands to manage the `HostFileObject`.
 

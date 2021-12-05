@@ -1,6 +1,5 @@
 $file = "$PSScriptRoot"
 
-
 $container = New-PesterContainer -Path "$PSScriptRoot\*.Tests.ps1" -Data @{ folder = $folders }
 Invoke-Pester -Container $container -Output Detailed
 
