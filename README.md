@@ -6,7 +6,7 @@ A PowerShell Module for managing the Windows Hosts File. It provides a collectio
 
 The Windows Hosts File stores 'host entries'; an IP Address and hostname combination that is used by the OS to resolve names to IP Addresses.
 
-A host entry uses a standard text format: `IPAddress Hostname`. It may also in a `# comment` after the host name but this is optional. `IPAddress` and `HostName` are mandatory.
+A host entry uses a standard text format: `IPAddress Hostname`. It may also contain a `# comment` after the host name but this is optional. `IPAddress` and `HostName` are mandatory.
 
 ## Versions
 
