@@ -13,7 +13,6 @@ function Save-HostFile {
     An example
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -23,16 +22,13 @@ function Save-HostFile {
 
     [CmdletBinding()]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         $content,
 
         [switch]$backup
-
     )
 
     begin {
-
         $isAdmin = Test-IsAdmin
 
         # if writing to default hosts file location and not an Admin, break
@@ -57,15 +53,11 @@ function Save-HostFile {
             catch {
                 $_.Exception.Message
             }
-
         }
-
     }
 
     process {
-
         foreach ($line in $content) {
-
             if ($firstWrite -eq $false) {
                 Set-Content -Path $script:hostFile -Value $line -Encoding UTF8
                 $firstWrite = $true
@@ -73,12 +65,9 @@ function Save-HostFile {
             else {
                 Add-Content -Path $script:hostFile -Value $line -Encoding UTF8
             }
-
         }
-
     }
 
     end {
     }
-
 }

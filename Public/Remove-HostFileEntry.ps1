@@ -27,41 +27,31 @@ function Remove-HostFileEntry {
 
     [CmdletBinding()]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         [PSTypeName('HostFile')]$hostFileEntry
-
     )
 
     begin {
-
-        <#
         try {
-            $null = Test-HostFileVariable HostFileObject -ErrorAction Stop
+            $null = Test-HostFileVariable -HostFile -ErrorAction Stop
         }
         catch {
             throw $_.Exception.Message
         }
-        #>
-
     }
 
     process {
-
         foreach ($entry in $hostFileEntry) {
-
             if ($script:hostFileObject -contains $entry) {
                 $script:hostFileObject.remove($entry)
             }
             else {
                 Write-Warning "[HostFileObject] doesn't contain [HostFileEntry]"
             }
-
-        } # foreach
+        }
     }
 
     end {
         Update-HostFileObject
     }
-
 }

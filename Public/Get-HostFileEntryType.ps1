@@ -23,7 +23,6 @@ function Get-HostFileEntryType {
     ghf | foreach { "Line {0}, {1} : {2}" -f $_.Line, $_.EntryType, $(Get-HostFileEntryType $_) }
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -37,11 +36,9 @@ function Get-HostFileEntryType {
         [PSTypeName('HostFile')]$hostEntry,
 
         [switch]$diag
-
     )
 
     begin {
-
         # commented out lines
         # this pattern matches all lines that start with a # and then a number
         # $commented = '^# [0-9]+|^#[0-9]+'
@@ -88,7 +85,6 @@ function Get-HostFileEntryType {
         }
 
         $null = Update-TypeData @TypeData -force
-
     }
 
     process {
@@ -145,7 +141,6 @@ function Get-HostFileEntryType {
             }
 
             if ($diag) {
-
                 [PSCustomObject]@{
                     PSTypeName = 'HostFileDiag'
                     LineNumber = $entry.lineNumber
@@ -157,17 +152,16 @@ function Get-HostFileEntryType {
                     Comment    = $comment
                     Blank      = $blank
                 }
-
             }
             else {
                 $entryType
             }
 
-        } # foreach
+        }
 
-    } # process
+    }
 
     end {
     }
 
-} # function
+}

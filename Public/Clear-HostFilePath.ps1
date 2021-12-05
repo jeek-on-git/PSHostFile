@@ -14,7 +14,6 @@ function Clear-HostFilePath {
     Clear-HostFileVariables
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -31,18 +30,14 @@ function Clear-HostFilePath {
     }
 
     process {
-
         if ([bool](Get-Variable HostFile -Scope Script -ErrorAction SilentlyContinue)) {
-
             try {
                 Remove-Variable -Name 'HostFile' -Scope script
             }
             catch {
                 $_.Exception.Message
             }
-
         }
-
     }
 
     end {

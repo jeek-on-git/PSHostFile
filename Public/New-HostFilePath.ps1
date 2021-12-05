@@ -13,7 +13,6 @@ function New-HostFilePath {
     New-HostFilePath C:\Temp\Hosts
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -22,19 +21,16 @@ function New-HostFilePath {
     #>
     [CmdletBinding()]
     param (
-
         [ValidateScript({ Test-Path -Path $_ -PathType Leaf})]
         [string]$hostFilePath,
 
         [switch]$passThru
-
     )
 
     begin {
     }
 
     process {
-
         if ($PSBoundParameters.ContainsKey('hostFilePath')) {
             $script:hostFile = $hostFilePath
             Write-Verbose "[HostFile] $script:hostFile"
@@ -44,7 +40,6 @@ function New-HostFilePath {
             $script:hostFile = "$env:SystemDrive\Windows\System32\Drivers\etc\hosts"
             Write-Verbose "[HostFile] $script:hostFile"
         }
-
     }
 
     end {
@@ -52,5 +47,4 @@ function New-HostFilePath {
             $script:hostFile
         }
     }
-
 }

@@ -53,8 +53,6 @@ function Restore-HostFile {
         $hostFileName
         Join-Path $targetFolder $hostFileName
 
-
-
     }
 
     end {

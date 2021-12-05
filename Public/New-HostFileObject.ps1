@@ -36,38 +36,29 @@ function New-HostFileObject {
     [CmdletBinding()]
     [OutputType("HostFile")]
     param (
-
         [ValidateScript({ Test-Path -Path $_ -PathType Leaf})]
         [string]$hostFilePath,
 
         [switch]$passThru
-
     )
 
     begin {
-
         if ($PSBoundParameters.ContainsKey('HostFilePath')) {
-
             New-HostFilePath -hostFilePath $hostFilePath
-
         }
 
         if (!(Test-HostFileVariable -HostFile)) {
-
             try {
                 New-HostFilePath
             }
             catch {
                 throw $_.Exception.Message
             }
-
         }
     }
 
     process {
-
         If (Test-Path $script:hostFile) {
-
             try {
                 $content = Get-Content -Path $script:hostFile -ErrorAction Stop
             }
@@ -81,28 +72,19 @@ function New-HostFileObject {
             $i = 1
 
             foreach ($line in $content) {
-
                 $script:hostFileObject.add($(New-HostFileLineObject -hostFileLine $line -LineNumber $i))
-
-                # increment line count
                 $i++
-
-            } # foreach
-
+            }
         }
         else {
             Write-Warning "Can't find [$script:HostFile]"
         }
-
-    } # process
+    }
 
     end {
-
         if ($passThru) {
             Get-HostFileObject
             # $script:hostFileObject
         }
-
     }
-
-} # function
+}

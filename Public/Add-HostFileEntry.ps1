@@ -17,7 +17,6 @@ function Add-HostFileEntry {
     Add-HostFileEntry $entry
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:

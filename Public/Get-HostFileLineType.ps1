@@ -21,7 +21,6 @@ function Get-HostFileLineType {
     $content | Get-HostFileLineType
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -36,7 +35,6 @@ function Get-HostFileLineType {
     )
 
     begin {
-
         # commented out lines
         # this pattern matches all lines that start with a # and then a number
         # $commented = '^# [0-9]+|^#[0-9]+'
@@ -77,11 +75,9 @@ function Get-HostFileLineType {
 
         # all lines that are blank
         $patternBlank = '^\s*$'
-
     }
 
     process {
-
         foreach ($line in $entry) {
 
             switch -regex ($line) {
@@ -93,85 +89,8 @@ function Get-HostFileLineType {
             }
             $type
         }
-
     }
 
     end {
     }
-
 }
-
-<#
-
-    # all commented out lines and spaces
-    # this pattern matches all lines that start with # or are blank
-    $pattern = '^$|^\s*$|^\s*#'
-
-    # commented out lines
-    # this pattern matches all lines that start with a # and then a number
-    <#
-    $commented = @(
-        '^# \d'
-        '^#\d'
-        ) -join "|"
-    $commented = @(
-        '^# [0-9]+'
-        '^#[0-9]+'
-    ) -join '|'
-
-    # host entry, any line starting with a number
-    $hostEntry = '^\d'
-
-    # comment, # no space then a word
-    # $comment = '^#\D'
-    # $comment = "^# [0-9]+|^#[0-9]+"
-
-    <#
-    '^#\s+[a-zA-Z]+|^#[a-zA-Z]+|^#\s+:'
-    $comment = @(
-        '^#\s+[a-zA-Z]+'
-        '^#[a-zA-Z]+'
-        '^#\s+:'
-    ) -join "|"
-
-    # hash followed immediately by letter
-    $letter = '^#[a-zA-Z]'
-
-    # all lines starting with # and nothing else
-    $hash  = '^#$'
-
-    # all lines that start with # then have a tab space
-    $tab   = '^#\t'
-
-    # all lines starting with #, has a space, then non digit characters
-    $word  = '^# \D'
-
-    # all lines that are blank
-    $blank = '^\s*$'
-
-    <#
-    $comment = '^#$|^#\t|^# \D|^#[a-zA-Z]'
-    $comment = @(
-        '^#$'
-        '^#\t'
-        '^# \D'
-        '^#[a-zA-Z]'
-    )
-
-    $comment = @(
-        $hash
-        $tab
-        $word
-        $letter
-    ) -join "|"
-
-    # these different regex pattern are join using the pipe: alternate pattern
-    # if the line of text matches any of these patterns return true
-    # this set of patterns will match the text of the host file
-    $header = @(
-        $hash
-        $tab
-        $word
-    ) -join "|"
-
-#>

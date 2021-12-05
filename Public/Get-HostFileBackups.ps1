@@ -24,7 +24,6 @@ function Get-HostFileBackups {
     Get-HostFileBackups -filter *20201227-0216-03*
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -34,17 +33,14 @@ function Get-HostFileBackups {
 
     [CmdletBinding()]
     param (
-
         [ValidateScript({ Test-Path -Path $_ -PathType Container })]
         [Alias('filePath','path')]
         [System.IO.FileInfo]$backupFolder,
 
         $filter = '*.bak'
-
     )
 
     begin {
-
         if (($PSBoundParameters.ContainsKey('backupFolder'))) {
             $folder = $backupFolder
         }
@@ -54,20 +50,16 @@ function Get-HostFileBackups {
         else {
             $folder = [System.IO.FileInfo]"$env:SystemDrive\Windows\System32\Drivers\etc"
         }
-
     }
 
     process {
-
         $backupFiles = Get-ChildItem $folder -Filter $filter
 
         foreach ($file in $backupFiles) {
             $file
         }
-
     }
 
     end {
     }
-
 }

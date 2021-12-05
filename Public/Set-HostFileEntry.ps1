@@ -28,7 +28,7 @@ function Set-HostFileEntry {
     HostFileEntry. Outputs a custom PS Object.
 
     .EXAMPLE
-    Get-HostFile | where line -eq 35 | Update-HostFileEntry -ipAddress 192.168.1.11 -hostname Server2
+    Get-HostFile | where line -eq 35 | Set-HostFileEntry -ipAddress 192.168.1.11 -hostname Server2
 
     .NOTES
 

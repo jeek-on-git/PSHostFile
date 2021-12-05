@@ -19,7 +19,6 @@ function Test-HostFileVariable {
     $true or $false
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -39,17 +38,14 @@ function Test-HostFileVariable {
     }
 
     process {
-
         if ($hostFile) {
             [bool](Get-Variable -Name 'HostFile' -Scope Script -ErrorAction SilentlyContinue)
         }
         if ($hostFileObject) {
             [bool](Get-Variable -Name 'HostFileObject' -Scope Script -ErrorAction SilentlyContinue)
         }
-
     }
 
     end {
     }
-
 }

@@ -34,7 +34,7 @@ function Get-HostFileEntry {
 
     # the result can then be used to Update, Add, or Remove Host File entries.
     # Update the returned entry with a new IP Address
-    Update-HostFileEntry -hostFileEntry $entry -ipAddress 192.168.100.101
+    Set-HostFileEntry -hostFileEntry $entry -ipAddress 192.168.100.101
 
     # Remove the returned entry from the host file
     Remove-HostFileEntry $entry
@@ -43,7 +43,6 @@ function Get-HostFileEntry {
     $entry | Add-HostFileEntry
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -54,7 +53,6 @@ function Get-HostFileEntry {
     [CmdletBinding(DefaultParameterSetName = 'lineNumber')]
     [Alias('gfe')]
     param (
-
         #[HostFile]$hostFileObject,
 
         [Parameter(Mandatory, Position = 0, ParameterSetName = 'lineNumber')]
@@ -65,22 +63,18 @@ function Get-HostFileEntry {
 
         [Parameter(Mandatory, Position = 0, ParameterSetName = 'IPAddress')]
         [ipaddress]$ipAddress
-
     )
 
     begin {
-
         try {
             $null = [bool](Get-Variable 'HostFileObject' -ErrorAction Stop)
         }
         catch {
             throw $_.Exception.Message
         }
-
     }
 
     process {
-
         if ($PSCmdlet.ParameterSetName -eq 'lineNumber'){ $filter ={$_.lineNumber -eq $lineNumber }}
         if ($PSCmdlet.ParameterSetName -eq 'ipAddress') { $filter ={$_.IPAddress  -eq $ipAddress  }}
         if ($PSCmdlet.ParameterSetName -eq 'hostname')  { $filter ={$_.Hostname   -eq $hostname   }}
@@ -91,7 +85,6 @@ function Get-HostFileEntry {
         catch {
             $_.Exception.Message
         }
-
     }
 
     end {

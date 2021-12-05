@@ -10,7 +10,6 @@ function Clear-HostFileObject {
     Clear-HostFileObject
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -27,22 +26,17 @@ function Clear-HostFileObject {
     }
 
     process {
-
         if (Test-HostFileVariable -HostFileObject) {
-
             Write-Verbose "[HostFileObject] exists, removing"
-
             try {
                 Remove-Variable -Name HostFileObject -Scope Script
             }
             catch {
                 $_.Exception.Message
             }
-
         }
     }
 
     end {
     }
-
 }

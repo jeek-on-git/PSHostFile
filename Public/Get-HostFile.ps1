@@ -10,7 +10,7 @@ function Get-HostFile {
     None. You cannot pipe objects to this function.
 
     .OUTPUTS
-    HostFileEntry Object.
+    HostFile
 
     .EXAMPLE
     Get-HostFile
@@ -20,7 +20,6 @@ function Get-HostFile {
     ghf
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -34,32 +33,25 @@ function Get-HostFile {
     )
 
     begin {
-
         if (!(Test-HostFileVariable -HostFile)) {
-
             try {
                 New-HostFilePath
             }
             catch {
                 throw $_.Exception.Message
             }
-
         }
-
     }
 
     process {
-
         If (Test-HostFileVariable -HostFileObject) {
             $script:hostFileObject
         }
         else {
             New-HostFileObject -passThru
         }
-
     }
 
     end {
     }
-
 }

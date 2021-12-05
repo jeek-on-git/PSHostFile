@@ -13,7 +13,6 @@ function Get-HostFileVariable {
     An example
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -23,13 +22,11 @@ function Get-HostFileVariable {
 
     [CmdletBinding(DefaultParameterSetName = 'HostFile')]
     param (
-
         [Parameter(ParameterSetName = 'HostFile')]
         [switch]$hostFile,
 
         [Parameter(ParameterSetName = 'HostFileObject')]
         [switch]$hostFileObject
-
     )
 
     if ($hostFile) {

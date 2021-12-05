@@ -30,13 +30,13 @@ function New-HostFileEntry {
     .EXAMPLE
     This creates a new Host File entry. The result is saved to the 'Entry' variable,
     which is then used by the Add-HostFileEntry command to update the HostFileObject.
-    $entry = New-HostFileEntry -entryType hostEntry -ipAddress 10.21.21.21 -hostname testServer21 -comment 'testcomment'
+    $entry = New-HostFileEntry -ipAddress 10.21.21.21 -hostname testServer21 -comment 'testcomment'
     Add-HostFileEntry -hostFileEntry $entry
 
     .EXAMPLE
     This creates a new 'Commented' Host File entry. The result is saved to the 'Commented' variable,
     which is then used by the Add-HostFileEntry command to update the HostFileObject.
-    $commented = New-HostFileEntry -entryType commented -ipAddress 10.10.10.11 -hostname testServer11 -comment 'testcomment'
+    $commented = New-HostFileEntry -ipAddress 10.10.10.11 -hostname testServer11 -comment 'testcomment'
     Add-HostFileEntry -hostFileEntry $commented
 
     .EXAMPLE
@@ -52,7 +52,7 @@ function New-HostFileEntry {
 
     .EXAMPLE
     New Host File Entry is created and then piped directly to the Remove-HostFileEntry command.
-    New-HostFileEntry -entryType hostEntry -ipAddress 10.21.21.23 -hostname testServer21 -comment 'testcomment3' | Remove-HostFileEntry
+    New-HostFileEntry -ipAddress 10.21.21.23 -hostname testServer21 -comment 'testcomment3' | Remove-HostFileEntry
 
     .NOTES
 

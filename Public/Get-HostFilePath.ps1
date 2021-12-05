@@ -10,7 +10,6 @@ function Get-HostFilePath {
     Get-HostFilePath
 
     .NOTES
-
     Author: Garry O'Neill
 
     Change log:
@@ -25,17 +24,14 @@ function Get-HostFilePath {
     }
 
     process {
-
         try {
             Get-Variable -Name HostFile -Scope Script -ErrorAction Stop | Select-Object -ExpandProperty Value
         }
         catch {
             $_.Exception.Message
         }
-
     }
 
     end {
     }
-
 }

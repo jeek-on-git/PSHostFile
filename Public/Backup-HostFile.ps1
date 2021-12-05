@@ -6,7 +6,7 @@ function Backup-HostFile {
     .DESCRIPTION
     Backs up (Copies) the Host File. By default this will be the same folder as the hostfile.
     However, it can be redirected to an alternate 'backupFolder'.
-    The file name is modifed when copied; The current date and time is appended to the file name and the .bak file extension is added.
+    The file name is modified when copied; The current date and time is appended to the file name and the .bak file extension is added.
 
     .PARAMETER backupFolder
     The folder location where the file is copied to.
@@ -36,17 +36,14 @@ function Backup-HostFile {
     #>
     [CmdletBinding()]
     param (
-
         [ValidateScript({ Test-Path -Path $_})]
         [Alias('filePath','path')]
         [System.IO.FileInfo]$backupFolder,
 
         [switch]$passThru
-
     )
 
     begin {
-
         try {
             $null = Test-HostFileVariable -HostFile -ErrorAction Stop
         }
@@ -78,11 +75,9 @@ function Backup-HostFile {
         Write-Verbose $newHostFileName
 
         $hostFilePath = Join-Path $hostFileDir $newHostFileName
-
     }
 
     process {
-
         $copyParams = @{
             Path        = $(Get-HostFilePath)
             Destination = $hostFilePath
@@ -100,7 +95,6 @@ function Backup-HostFile {
         catch {
             $_.Exception
         }
-
     }
 
     end {
@@ -108,5 +102,4 @@ function Backup-HostFile {
             Test-Path $hostFilePath
         }
     }
-
 }
