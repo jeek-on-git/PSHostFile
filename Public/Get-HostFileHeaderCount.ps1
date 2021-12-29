@@ -1,4 +1,20 @@
 function Get-HostFileHeaderCount {
+    <#
+    .SYNOPSIS
+    Gets the 'header' count, i.e. lines that start with a #, on a hosts file
+
+    .DESCRIPTION
+    Gets the 'header' count, i.e. lines that start with a #, on a hosts file
+
+    .PARAMETER hostFile
+    Path to the hosts file
+
+    .EXAMPLE
+    Get-HostFileHeaderCount -hostFile 'C:\Windows\System32\drivers\etc\hosts'
+
+    .NOTES
+
+    #>
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]

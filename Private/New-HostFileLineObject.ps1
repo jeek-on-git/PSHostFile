@@ -23,6 +23,7 @@ function New-HostFileLineObject {
     Author: Garry O'Neill
 
     Change log:
+    28/12/2021 - Garry O'Neill - Replaced the fixed headercount vaule with Get-HostFileHeaderCount function to determine a host's file header count
     01/01/2020 - Garry O'Neill - Created.
 
     #>
@@ -45,7 +46,7 @@ function New-HostFileLineObject {
 
             $type = Get-HostFileLineType $line
 
-            # header and comments have the same format, therefore any line after line 22 is a comment
+            # header and comments have the same format, therefore any line after the $headercount is a comment
             # conversely any line before is a header
             if ($lineNumber -le $headerCount -and $type -match 'Comment|Commented|Blank') {
                 $type = 'Header'
