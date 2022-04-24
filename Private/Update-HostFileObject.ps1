@@ -32,14 +32,11 @@ function Update-HostFileObject {
 
     [CmdletBinding()]
     param (
-
         <#
         [Parameter(Mandatory)]
         [PSTypeName('HostFile')]$hostFileObject,
         #>
-
         [int]$startingValue = 1
-
     )
 
     begin {
@@ -47,27 +44,23 @@ function Update-HostFileObject {
     }
 
     process {
-
         $newObject = New-Object System.Collections.Generic.List[object]
 
         # line counter
         $i = $startingValue
 
         foreach ($obj in $object) {
-
             # update the LineNumber
             $obj.lineNumber = $i
             $newObject.add($($obj))
 
             # increment line count
             $i++
+        }
 
-        } # foreach
-
-    } # process
+    }
 
     end {
         $script:hostFileObject = $newObject
     }
-
-} # function
+}

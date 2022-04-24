@@ -1,31 +1,30 @@
 function Convert-StringToBlank {
     <#
     .SYNOPSIS
-    Short description
+    Converts HostFile entry to a blank line
 
     .DESCRIPTION
-    Long description
+    Converts HostFile entry to a blank line
 
     .PARAMETER string
-    Parameter description
+    HostFile entry
 
     .PARAMETER entryType
-    Parameter description
+    HostFile entry type
 
     .PARAMETER lineNumber
-    Parameter description
+    HostFile line number
 
     .EXAMPLE
-    An example
+    
 
     .NOTES
-    General notes
+    
     #>
 
     [CmdletBinding()]
     [OutputType("HostFile")]
     param (
-
         [Parameter(ValueFromPipeline)]
         [ValidatePattern('^\s*$')]
         [String]$string,
@@ -34,29 +33,23 @@ function Convert-StringToBlank {
         $entryType,
 
         [int]$lineNumber
-
     )
 
     begin {
-
         $TypeData = @{
             TypeName = 'HostFile'
             DefaultDisplayPropertySet = 'LineNumber','EntryType','IPAddress','Hostname','Comment'
         }
-
         $null = Update-TypeData @TypeData -force
-
     }
 
     process {
-
         if ($PSBoundParameters.ContainsKey('EntryType')) {
             $type = $entryType
         }
         else {
             $type = 'Blank'
         }
-
         [PSCustomObject]@{
             PSTypeName = 'HostFile'
             LineNumber = $lineNumber
@@ -66,10 +59,8 @@ function Convert-StringToBlank {
             Comment    = ''
             String     = $string
         }
-
     }
 
     end {
     }
-
 }

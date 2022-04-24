@@ -1,53 +1,44 @@
 function Convert-StringToCommented {
     <#
     .SYNOPSIS
-    Short description
+    Converts HostFile entry to an entry type of 'Commented'
 
     .DESCRIPTION
-    Long description
+    Converts HostFile entry to an entry type of 'Commented'
 
     .PARAMETER string
-    Parameter description
-
-    .PARAMETER entryType
-    Parameter description
+    The HostFile entry to convert
 
     .PARAMETER lineNumber
-    Parameter description
+    The HostFile line number
 
     .EXAMPLE
-    An example
+    
 
     .NOTES
-    General notes
+    
     #>
 
     [CmdletBinding()]
     [OutputType("HostFile")]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         #[ValidatePattern('^#\D')]
         [ValidatePattern('^# [0-9]+|^#[0-9]+')]
         [String]$string,
 
         [int]$lineNumber
-
     )
 
     begin {
-
         $TypeData = @{
             TypeName = 'HostFile'
             DefaultDisplayPropertySet = 'LineNumber','EntryType','IPAddress','Hostname','Comment'
         }
-
         $null = Update-TypeData @TypeData -force
-
     }
 
     process {
-
         # remove all "#" from the string
         $line = $($string.Replace("#",'')).TrimStart()
 
@@ -82,10 +73,8 @@ function Convert-StringToCommented {
             Comment    = $comment
             String     = $string
         }
-
     }
 
     end {
     }
-
 }

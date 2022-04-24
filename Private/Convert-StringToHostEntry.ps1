@@ -1,31 +1,30 @@
 function Convert-StringToHostEntry {
     <#
     .SYNOPSIS
-    Short description
+    Converts a HostFile line to an entry type of HostEntry
 
     .DESCRIPTION
-    Long description
+    Converts a HostFile line to an entry type of HostEntry
 
     .PARAMETER string
-    Parameter description
+    The String to convert
 
     .PARAMETER entryType
-    Parameter description
+    The HostFile entry type
 
     .PARAMETER lineNumber
-    Parameter description
+    The HostFile line number
 
     .EXAMPLE
-    An example
+    
 
     .NOTES
-    General notes
+    
     #>
 
     [CmdletBinding()]
     [OutputType("HostFile")]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         [ValidatePattern('^\d+.\d+.\d+.\d+')]
         [String]$string,
@@ -33,24 +32,18 @@ function Convert-StringToHostEntry {
         $entryType,
 
         [int]$lineNumber
-
     )
 
     begin {
-
         $space = '\s+'
-
         $TypeData = @{
             TypeName = 'HostFile'
             DefaultDisplayPropertySet = 'LineNumber','EntryType','IPAddress','Hostname','Comment'
         }
-
         $null = Update-TypeData @TypeData -force
-
     }
 
     process {
-
         if ($PSBoundParameters.ContainsKey('EntryType')) {
             $type = $entryType
         }
@@ -94,7 +87,6 @@ function Convert-StringToHostEntry {
             Comment    = $comment
             String     = $string
         }
-
     }
 
     end {

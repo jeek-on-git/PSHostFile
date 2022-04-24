@@ -1,31 +1,30 @@
 function Convert-StringToComment {
     <#
     .SYNOPSIS
-    Short description
+    Converts HostFile entry to an entry type of 'Comment'
 
     .DESCRIPTION
-    Long description
+    Converts HostFile entry to an entry type of 'Comment'
 
     .PARAMETER string
-    Parameter description
+    The HostFile entry to convert
 
     .PARAMETER entryType
-    Parameter description
+    Specify the HostFile Entry Type
 
     .PARAMETER lineNumber
-    Parameter description
+    The HostFile line number
 
     .EXAMPLE
-    An example
+    
 
     .NOTES
-    General notes
+    
     #>
 
     [CmdletBinding()]
     [OutputType("HostFile")]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         [AllowNull()]
         [AllowEmptyString()]
@@ -38,7 +37,6 @@ function Convert-StringToComment {
         $entryType,
 
         [int]$lineNumber
-
     )
 
     begin {
@@ -47,24 +45,19 @@ function Convert-StringToComment {
             TypeName = 'HostFile'
             DefaultDisplayPropertySet = 'LineNumber','EntryType','IPAddress','Hostname','Comment'
         }
-
         $null = Update-TypeData @TypeData -force
-
     }
 
     process {
-
         if ($PSBoundParameters.ContainsKey('EntryType')) {
             $type = $entryType
         }
         else {
             $type = 'Comment'
         }
-
         $comment = $string
-
-        # if the $comment starts with either a "#" then remove it, will remove any combination of # and space.
-        # then add "# ". this was done to keep the comment format consistent
+        # if the $comment starts with either a "#" then remove it, will remove any combination of '#' and space.
+        # then adds a "# ". This is done to keep the 'comment' format consistent. i.e. always a hash then a space then the comment
         if ($comment.StartsWith("#")) {
             $comment = $($comment.Replace("#",'')).TrimStart()
             $comment = "# $comment"
@@ -73,7 +66,6 @@ function Convert-StringToComment {
             # $comment = $($comment.Replace("# ",'')).TrimStart()
             $comment = "# $comment"
         }
-
         # create a custom 'HostFile' Object
         [PSCustomObject]@{
             PSTypeName = 'HostFile'
@@ -84,7 +76,6 @@ function Convert-StringToComment {
             Comment    = $comment
             String     = $string
         }
-
     }
 
     end {

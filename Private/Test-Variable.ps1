@@ -31,12 +31,9 @@ function Test-Variable {
     }
 
     process {
-
         [bool](Get-Variable -Name $var -Scope Script)
-
     }
 
     end {
     }
-
 }

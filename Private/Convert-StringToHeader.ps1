@@ -1,31 +1,28 @@
 function Convert-StringToHeader {
     <#
     .SYNOPSIS
-    Short description
+    Converts HostFile entry to an entry type of 'Header'
 
     .DESCRIPTION
-    Long description
+    Converts HostFile entry to an entry type of 'Header'
 
     .PARAMETER string
-    Parameter description
-
-    .PARAMETER entryType
-    Parameter description
+    HostFile entry to convert
 
     .PARAMETER lineNumber
-    Parameter description
+    HostFile line number
 
     .EXAMPLE
-    An example
+    
 
     .NOTES
-    General notes
+    
+
     #>
 
     [CmdletBinding()]
     [OutputType("HostFile")]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         [AllowNull()]
         [AllowEmptyString()]
@@ -33,22 +30,17 @@ function Convert-StringToHeader {
         [String]$string,
 
         [int]$lineNumber
-
     )
 
     begin {
-
         $TypeData = @{
             TypeName = 'HostFile'
             DefaultDisplayPropertySet = 'LineNumber','EntryType','IPAddress','Hostname','Comment'
         }
-
         $null = Update-TypeData @TypeData -force
-
     }
 
     process {
-
         # create a custom 'HostFile' Object
         [PSCustomObject]@{
             PSTypeName = 'HostFile'
@@ -59,7 +51,6 @@ function Convert-StringToHeader {
             Comment    = $string
             String     = $string
         }
-
     }
 
     end {

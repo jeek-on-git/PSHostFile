@@ -18,7 +18,7 @@ function Get-HostFileVariable {
     Change log:
     01/01/2020 - Garry O'Neill - Created.
 
-#>
+    #>
 
     [CmdletBinding(DefaultParameterSetName = 'HostFile')]
     param (

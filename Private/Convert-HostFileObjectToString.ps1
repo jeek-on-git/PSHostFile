@@ -30,22 +30,18 @@ function Convert-HostFileObjectToString {
     [CmdletBinding()]
     [OutputType("String")]
     param (
-
         # Accepts HostFileObject
         [Parameter(ValueFromPipeline)]
         [PSTypeName('HostFile')]$object,
 
         [Int]$padding = 24
-
     )
 
     begin {
     }
 
     process {
-
         $object | ForEach-Object {
-
             if ($_.EntryType -eq 'Header') {
                 $_.comment
             }
@@ -61,12 +57,9 @@ function Convert-HostFileObjectToString {
             elseif ($_.EntryType -eq 'Blank') {
                 ""
             }
-
         }
-
     }
 
     end {
     }
-
 }

@@ -40,7 +40,6 @@ function New-FileName {
 
     [CmdletBinding()]
     param (
-
         [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
         #[ValidatePattern('(\.\w{3})$')]
         [System.IO.FileInfo]$name,
@@ -54,13 +53,11 @@ function New-FileName {
 
         [ValidateSet('-','_')]
         $separator = '-'
-
     )
 
     begin {}
 
     process {
-
         $date = Get-Date -f yyyyMMdd-hhmm-ss
 
         $extension = $name.Extension
@@ -86,5 +83,4 @@ function New-FileName {
 
     }
     end {}
-
 }
