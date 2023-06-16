@@ -22,9 +22,6 @@ function Save-HostFile {
 
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory,ValueFromPipeline)]
-        $content,
-
         [switch]$backup
     )
 
@@ -38,14 +35,11 @@ function Save-HostFile {
         }
 
         try {
-            $null = Test-HostFileVariable HostFile -ErrorAction Stop
+            $null = Test-HostFileVariable -HostFileObject -ErrorAction Stop
         }
         catch {
             throw $_.Exception.Message
         }
-
-        $firstWrite = $false
-
         if ($backup) {
             try {
                 Backup-HostFile
@@ -54,16 +48,21 @@ function Save-HostFile {
                 $_.Exception.Message
             }
         }
+        $firstWrite = $false
+        $hostfile = Get-HostFile
+        $filePath = Get-HostFilePath
     }
 
     process {
-        foreach ($line in $content) {
+        foreach ($line in $hostfile) {
             if ($firstWrite -eq $false) {
-                Set-Content -Path $script:hostFile -Value $line -Encoding UTF8
+                # $line
+                Set-Content -Path $filePath -Value $line -Encoding UTF8
                 $firstWrite = $true
             }
             else {
-                Add-Content -Path $script:hostFile -Value $line -Encoding UTF8
+                # $line
+                Add-Content -Path $filePath -Value $line -Encoding UTF8
             }
         }
     }

@@ -86,59 +86,40 @@ function New-HostFileEntry {
     )
 
     begin {
-
         try {
             $null = Test-HostFileVariable -HostFileObject -ErrorAction Stop
         }
         catch {
             throw $_.Exception.Message
         }
-
         $TypeData = @{
             TypeName = 'HostFile'
             DefaultDisplayPropertySet = 'Line','EntryType','IPAddress','Hostname','LineComment'
         }
-
         $null = Update-TypeData @TypeData -force
-
     }
 
     process {
-
         # get the last line number of the HostFileObject
         $lineNumber = Get-HostFileObject | Select-Object -Last 1 -ExpandProperty LineNumber
         $lineNumber = $lineNumber + 1
 
         if ($PSCmdlet.ParameterSetName -eq 'HostEntry') {
-
             $entryType = 'HostEntry'
-
             if ($PSBoundParameters.ContainsKey('Comment')) {
-
                 $comment = $($comment -replace '#').Trim()
                 $comment = "# $comment"
-
             }
-
             if ($PSBoundParameters.ContainsKey('IPAddress')) {
-
                 $ipAddress = $($ipAddress -replace '#').Trim()
-
             }
-
             if ($PSBoundParameters.ContainsKey('Hostname')) {
-
                 $hostname = $hostname.Trim()
-
             }
-
             if ($commented) {
-
                 $ipAddress = "# $ipAddress"
                 $entryType = 'Commented'
-
             }
-
             [PSCustomObject] @{
                 PSTypeName = 'HostFile'
                 LineNumber = $lineNumber
@@ -148,17 +129,14 @@ function New-HostFileEntry {
                 Comment    = $comment
                 String     = $null
             }
-
         }
         if ($PSCmdlet.ParameterSetName -eq 'LineComment') {
-
             if ($lineComment -match "^#") {
                 $lineComment = $lineComment -replace("#","# ")
             }
             else {
                 $lineComment = "# $lineComment"
             }
-
             [PSCustomObject] @{
                 PSTypeName = 'HostFile'
                 LineNumber = $lineNumber
@@ -168,10 +146,8 @@ function New-HostFileEntry {
                 Comment    = $lineComment
                 String     = $null
             }
-
         }
         if ($PSCmdlet.ParameterSetName -eq 'Blank') {
-
             [PSCustomObject] @{
                 PSTypeName = 'HostFile'
                 LineNumber = $lineNumber
@@ -181,12 +157,9 @@ function New-HostFileEntry {
                 Comment    = $null
                 String     = $null
             }
-
         }
-
     }
 
     end {
     }
-
 }

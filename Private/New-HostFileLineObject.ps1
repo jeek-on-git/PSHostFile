@@ -54,11 +54,11 @@ function New-HostFileLineObject {
 
             switch ($type) {
                 'Commented'   { Convert-StringToCommented -String $line -lineNumber $lineNumber                     }
-                'Comment'     { Convert-StringToComment -String $line -EntryType $type -lineNumber $lineNumber      }
-                'Header'      { Convert-StringToHeader -String $line -lineNumber $lineNumber                        }
+                'Comment'     { Convert-StringToComment   -String $line -EntryType $type -lineNumber $lineNumber    }
+                'Header'      { Convert-StringToHeader    -String $line -lineNumber $lineNumber                     }
                 'HostEntry'   { Convert-StringToHostEntry -String $line -EntryType $type -lineNumber $lineNumber    }
-                'Blank'       { Convert-StringToBlank -String $line -lineNumber $lineNumber                         }
-                Default       { Convert-StringToBlank -String $line -lineNumber $lineNumber                         }
+                'Blank'       { Convert-StringToBlank     -String $line -lineNumber $lineNumber                     }
+                Default       { Convert-StringToBlank     -String $line -lineNumber $lineNumber                     }
             }
         }
     }

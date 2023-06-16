@@ -88,7 +88,7 @@ FunctionsToExport = @(
     'New-HostFilePath'
     'Remove-HostFileEntry'
     'Restore-HostFile'
-    'Save-HostFileObject'
+    'Save-HostFile'
     'Set-HostFileEntry'
     'Test-HostFileVariable'
     'Get-HostFileVariable'
