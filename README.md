@@ -93,7 +93,7 @@ Get-HostFilePath
 
 ## HostFileObject
 
-The `$hostFileObject` variable is the custom PowerShell Object representing the Windows HostFile loaded in memory. This is what gets modified when updating, adding or removing entries via the various commands. Once all changes are complete then they are saved (written) back to the Windows' HostFile using the `Save-HostFileObject` command.
+The `$hostFileObject` variable is the custom PowerShell Object representing the Windows HostFile loaded in memory. This is what gets modified when updating, adding or removing entries via the various commands. Once all changes are complete they are then written back to the Windows' Host File using the `Save-HostFile` command.
 
 You can run the `Get-HostFile` command at any time to view the state of the `$hostFileObject`, and this is great way to view any changes that have been made. Changes aren't committed until they have been written back to the file. If you do make a mistake and want to start again, then use the `Clear-HostFileObject` to clear to `$hostFileObject`.
 
@@ -368,7 +368,7 @@ Use the following set of commands to manage the `HostFileObject`.
 |`Get-HostFile`|Gets the `HostFileObject`. Will also load it into memory if it doesn't exist|
 |`New-HostFileObject`|Creates a new `HostFileObject`|
 |`Clear-HostFileObject`|Clears the `HostFileObject`|
-|`Save-HostFileObject`|Saves the `HostFileObject`, and any changes, back to disk|
+|`Save-HostFile`|Saves the `HostFileObject`, and any changes, back to disk|
 |||
 
 ### Managing HostFile entries
