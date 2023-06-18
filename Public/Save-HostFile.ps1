@@ -48,22 +48,17 @@ function Save-HostFile {
                 $_.Exception.Message
             }
         }
-        $firstWrite = $false
         $hostfile = Get-HostFile
         $filePath = Get-HostFilePath
     }
 
     process {
-        foreach ($line in $hostfile) {
-            if ($firstWrite -eq $false) {
-                # $line
-                Set-Content -Path $filePath -Value $line -Encoding UTF8
-                $firstWrite = $true
-            }
-            else {
-                # $line
-                Add-Content -Path $filePath -Value $line -Encoding UTF8
-            }
+        try {
+            $string = Convert-HostFileObjectToText $hostfile -ErrorAction Stop
+            Set-Content -Path $filePath -Value $string -Encoding UTF8 -ErrorAction Stop
+        }
+        catch {
+            $_.Exception.Message
         }
     }
 

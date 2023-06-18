@@ -76,6 +76,7 @@ FunctionsToExport = @(
     'Clear-HostFileEntry'
     'Clear-HostFileObject'
     'Clear-HostFilePath'
+    'Convert-HostFileObjectToText'
     'Get-HostFile'
     'Get-HostFileBackups'
     'Get-HostFileEntry'
