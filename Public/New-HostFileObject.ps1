@@ -8,6 +8,12 @@ function New-HostFileObject {
     If a path isn't specified it will load the default Windows host file.
     The object is saved to a script scoped variable called "HostFileObject".
 
+    .PARAMETER HostFilePath
+    The path to the host file.
+
+    .PARAMETER PassThru
+    Switch parameter to output the HostFile object.
+
     .INPUTS
     None.
 
@@ -32,9 +38,9 @@ function New-HostFileObject {
     [OutputType("HostFile")]
     param (
         [ValidateScript({ Test-Path -Path $_ -PathType Leaf})]
-        [string]$hostFilePath,
+        [string]$HostFilePath,
 
-        [switch]$passThru
+        [switch]$PassThru
     )
 
     begin {

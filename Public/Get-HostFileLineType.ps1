@@ -6,7 +6,7 @@ function Get-HostFileLineType {
     .DESCRIPTION
     Categories the string type when matched against specific patterns
 
-    .PARAMETER entry
+    .PARAMETER Entry
     The string to be categorised
 
     .INPUTS
@@ -27,7 +27,7 @@ function Get-HostFileLineType {
 [CmdletBinding()]
     param (
         [parameter(ValueFromPipeline)]
-        [string]$entry
+        [string]$Entry
     )
 
     begin {

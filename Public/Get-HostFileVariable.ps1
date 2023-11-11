@@ -6,6 +6,12 @@ function Get-HostFileVariable {
     .DESCRIPTION
     Returns either the HostFile or HostFileObject variable
 
+    .PARAMETER HostFile
+    Switch parameter to select the HostFile variable.
+
+    .PARAMETER HostFileObject
+    Switch parameter to select the HostFileObject variable.
+
     .EXAMPLE
     Get-HostFileVariable -hostFile
 
@@ -19,10 +25,10 @@ function Get-HostFileVariable {
     [CmdletBinding(DefaultParameterSetName = 'HostFile')]
     param (
         [Parameter(ParameterSetName = 'HostFile')]
-        [switch]$hostFile,
+        [switch]$HostFile,
 
         [Parameter(ParameterSetName = 'HostFileObject')]
-        [switch]$hostFileObject
+        [switch]$HostFileObject
     )
 
     if ($hostFile) {

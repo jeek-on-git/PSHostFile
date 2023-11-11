@@ -6,8 +6,11 @@ function New-HostFilePath {
     .DESCRIPTION
     Specifies path to a Hosts file.
 
-    .PARAMETER hostFilePath
+    .PARAMETER HostFilePath
     Path to the Hosts file
+
+    .PARAMETER PassThru
+    Switch parater to show the HostFile
 
     .EXAMPLE
     New-HostFilePath C:\Temp\Hosts
@@ -18,9 +21,9 @@ function New-HostFilePath {
     [CmdletBinding()]
     param (
         [ValidateScript({ Test-Path -Path $_ -PathType Leaf})]
-        [string]$hostFilePath,
+        [string]$HostFilePath,
 
-        [switch]$passThru
+        [switch]$PassThru
     )
 
     begin {

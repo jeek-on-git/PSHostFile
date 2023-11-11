@@ -6,7 +6,7 @@ function Get-HostFileHeaderCount {
     .DESCRIPTION
     Gets the 'header' count, i.e. lines that start with a #, on a hosts file
 
-    .PARAMETER hostFile
+    .PARAMETER HostFile
     Path to the hosts file
 
     .EXAMPLE
@@ -18,7 +18,7 @@ function Get-HostFileHeaderCount {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
-        [string]$hostFile
+        [string]$HostFile
     )
 
     begin {

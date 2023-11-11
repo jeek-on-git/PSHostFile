@@ -6,7 +6,7 @@ function Add-HostFileEntry {
     .DESCRIPTION
     Adds an 'Host' entry to the HostFileObject.
 
-    .PARAMETER hostFileEntry
+    .PARAMETER HostFileEntry
     This is a custom 'HostFileEntry' object created using the New-HostFileEntry command.
 
     .INPUTS
@@ -22,7 +22,7 @@ function Add-HostFileEntry {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory,ValueFromPipeline)]
-        [PSTypeName('HostFile')]$hostFileEntry
+        [PSTypeName('HostFile')]$HostFileEntry
     )
 
     begin {

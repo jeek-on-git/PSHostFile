@@ -6,7 +6,7 @@ function Remove-HostFileEntry {
     .DESCRIPTION
     Removes a Hosts file entry from the $hostFileObject
 
-    .PARAMETER hostFileEntry
+    .PARAMETER HostFileEntry
     The Hosts file entry to be removed
 
     .EXAMPLE
@@ -23,7 +23,7 @@ function Remove-HostFileEntry {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory,ValueFromPipeline)]
-        [PSTypeName('HostFile')]$hostFileEntry
+        [PSTypeName('HostFile')]$HostFileEntry
     )
 
     begin {

@@ -1,12 +1,12 @@
 function Restore-HostFile {
     <#
     .SYNOPSIS
-    Restore a Hosts file from backup
+    Restore a Hosts file from backup.
 
     .DESCRIPTION
     Restore a Hosts file from the specified backup.
 
-    .PARAMETER backupFile
+    .PARAMETER BackupFile
     The path to the backup file
 
     .EXAMPLE
@@ -19,14 +19,16 @@ function Restore-HostFile {
 
     [CmdletBinding()]
     param (
-
+        [Parameter(Mandatory)]
         [ValidateScript({ Test-Path -Path $_ -PathType Leaf })]
-        [System.IO.FileInfo]$backupFile
+        [System.IO.FileInfo]$BackupFile
     )
 
     begin {
+        # Unfinshed.
+        Break
 
-        if (!(Test-Variable hostFile)) {
+        if (!(Test-HostFileVariable -HostFile)) {
             $script:hostFile = "$env:SystemDrive\Windows\System32\Drivers\etc\hosts"
         }
 

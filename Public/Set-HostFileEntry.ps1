@@ -6,18 +6,18 @@ function Set-HostFileEntry {
     .DESCRIPTION
     Updates an existing Host File Entry.
 
-    .PARAMETER entryType
+    .PARAMETER EntryType
     Only accepts either 'HostEntry' or 'Commented' entry.
     'HostEntry' is an IP Address and Host name entry
     'Commented' is an IP Address and Host name entry that is commented out. This prefixes the line with a "#".
 
-    .PARAMETER ipAddress
+    .PARAMETER IPAddress
     Updates the IP Address
 
-    .PARAMETER hostname
+    .PARAMETER Hostname
     Updates the Hostname
 
-    .PARAMETER comment
+    .PARAMETER Comment
     Updates the Comment
 
     .INPUTS
@@ -36,7 +36,6 @@ function Set-HostFileEntry {
 
     [CmdletBinding()]
     param (
-
         [Parameter(Mandatory,ValueFromPipeline)]
         [PSTypeName('HostFile')]$hostFileEntry,
 
@@ -47,7 +46,6 @@ function Set-HostFileEntry {
         [string]$comment,
 
         [switch]$commented
-
     )
 
     begin {

@@ -4,13 +4,20 @@ function Test-HostFileVariable {
     Test if a variable exists and returns True or False
 
     .DESCRIPTION
-    Test if a variable exists and returns True or False
+    Test if a variable exists and returns True or False.
+    Mainly used for troubleshooting and the modules internals.
 
-    .PARAMETER var
-    The name of the variable
+    .PARAMETER HostFile
+    Swtich parameter to select the HostFile
+
+    .PARAMETER HostFileObject
+    Swtich parameter to select the HostFileObject
 
     .EXAMPLE
-    Test-HostFileVariable HostFile
+    Test-HostFileVariable -HostFile
+
+    .EXAMPLE
+    Test-HostFileVariable -HostFileObject
 
     .INPUTS
     [String]
@@ -25,9 +32,9 @@ function Test-HostFileVariable {
     [CmdletBinding(DefaultParameterSetName = 'HostFile')]
     param (
         [Parameter(ParameterSetName = 'HostFile')]
-        [switch]$hostFile,
+        [switch]$HostFile,
         [Parameter(ParameterSetName = 'HostFileObject')]
-        [switch]$hostFileObject
+        [switch]$HostFileObject
     )
 
     begin {

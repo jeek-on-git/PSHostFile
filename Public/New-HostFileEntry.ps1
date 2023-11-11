@@ -6,22 +6,22 @@ function New-HostFileEntry {
     .DESCRIPTION
     This creates a new 'HostFileEntry' object, which can then used to either add or remove an entry from the HostFileObject.
 
-    .PARAMETER ipAddress
+    .PARAMETER IPAddress
     IP Address
 
-    .PARAMETER hostname
+    .PARAMETER Hostname
     Hostname
 
-    .PARAMETER comment
+    .PARAMETER Comment
     Adds a comment to the host entry
 
-    .PARAMETER commented
+    .PARAMETER Commented
     Comments out, i.e. adds a hash, to the IP Address
 
-    .PARAMETER lineComment
+    .PARAMETER LineComment
     Adds a line comment
 
-    .PARAMETER blank
+    .PARAMETER Blank
     Adds a blank line
 
     .OUTPUTS
@@ -61,22 +61,22 @@ function New-HostFileEntry {
     param (
 
         [Parameter(Mandatory, ParameterSetName = 'HostEntry')]
-        [string]$ipAddress,
+        [string]$IPAddress,
 
         [Parameter(Mandatory, ParameterSetName = 'HostEntry')]
-        [string]$hostname,
+        [string]$Hostname,
 
         [Parameter(ParameterSetName = 'HostEntry')]
-        [string]$comment,
+        [string]$Comment,
 
         [Parameter(ParameterSetName = 'HostEntry')]
-        [switch]$commented,
+        [switch]$Commented,
 
         [Parameter(ParameterSetName = 'LineComment')]
-        [string]$lineComment,
+        [string]$LineComment,
 
         [Parameter(Mandatory, ParameterSetName = 'Blank')]
-        [switch]$blank
+        [switch]$Blank
 
     )
 

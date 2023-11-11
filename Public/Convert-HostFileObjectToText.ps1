@@ -18,7 +18,7 @@ function Convert-HostFileObjectToText {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
-        [PSTypeName('HostFile')]$hostFileObject
+        [PSTypeName('HostFile')]$HostFileObject
     )
 
     begin {

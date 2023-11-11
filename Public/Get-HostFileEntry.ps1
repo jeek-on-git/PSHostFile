@@ -6,13 +6,13 @@ function Get-HostFileEntry {
     .DESCRIPTION
     The will return the a host file entry based on supplied parameter.
 
-    .PARAMETER line
+    .PARAMETER Line
     Host file line number to return
 
-    .PARAMETER hostname
+    .PARAMETER Hostname
     Host file hostname entry to return
 
-    .PARAMETER ipAddress
+    .PARAMETER IPAddress
     Host file IPAddress entry to return
 
     .EXAMPLE
@@ -52,13 +52,13 @@ function Get-HostFileEntry {
         #[HostFile]$hostFileObject,
 
         [Parameter(Mandatory, Position = 0, ParameterSetName = 'lineNumber')]
-        [int]$lineNumber,
+        [int]$LineNumber,
 
         [Parameter(Mandatory, Position = 0, ParameterSetName = 'Hostname')]
-        [string]$hostname,
+        [string]$Hostname,
 
         [Parameter(Mandatory, Position = 0, ParameterSetName = 'IPAddress')]
-        [ipaddress]$ipAddress
+        [ipaddress]$IPAddress
     )
 
     begin {

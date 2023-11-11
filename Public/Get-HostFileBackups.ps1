@@ -31,7 +31,7 @@ function Get-HostFileBackups {
     param (
         [ValidateScript({ Test-Path -Path $_ -PathType Container })]
         [Alias('filePath','path')]
-        [System.IO.FileInfo]$backupFolder,
+        [System.IO.FileInfo]$BackupFolder,
 
         $filter = '*.bak'
     )

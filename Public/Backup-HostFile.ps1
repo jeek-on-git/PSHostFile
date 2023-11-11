@@ -8,10 +8,10 @@ function Backup-HostFile {
     However, it can be redirected to an alternate 'backupFolder'.
     The file name is modified when copied; The current date and time is appended to the file name and the .bak file extension is added.
 
-    .PARAMETER backupFolder
+    .PARAMETER BackupFolder
     The folder location where the file is copied to.
 
-    .PARAMETER passThru
+    .PARAMETER PassThru
     Switch parameter to output the result from the copy-item command.
 
     .OUTPUTS
@@ -33,7 +33,7 @@ function Backup-HostFile {
     param (
         [ValidateScript({ Test-Path -Path $_})]
         [Alias('filePath','path')]
-        [System.IO.FileInfo]$backupFolder,
+        [System.IO.FileInfo]$BackupFolder,
 
         [switch]$passThru
     )

@@ -6,10 +6,10 @@ function Get-HostFileEntryType {
     .DESCRIPTION
     Returns the Hosts file host entry type from the $hostFileObject
 
-    .PARAMETER hostEntry
+    .PARAMETER HostEntry
     Entry/Entries from the $hostFileObject
 
-    .PARAMETER diag
+    .PARAMETER Diag
     Switch parameter to toggles the output. If used an object
 
     .INPUTS
@@ -29,9 +29,9 @@ function Get-HostFileEntryType {
     [CmdletBinding()]
     param (
         [parameter(ValueFromPipeline)]
-        [PSTypeName('HostFile')]$hostEntry,
+        [PSTypeName('HostFile')]$HostEntry,
 
-        [switch]$diag
+        [switch]$Diag
     )
 
     begin {
@@ -84,9 +84,7 @@ function Get-HostFileEntryType {
     }
 
     process {
-
         foreach ($entry in $hostEntry) {
-
             $ipAddress  = $false
             $hostName   = $false
             $commented  = $false
@@ -122,7 +120,6 @@ function Get-HostFileEntryType {
                 $comment = $true
                 # $entryType = 'Comment'
             }
-
             if ($comment) {
                 $entryType = 'Comment'
             }
@@ -135,7 +132,6 @@ function Get-HostFileEntryType {
             if ($ipAddress -and $hostName) {
                 $entryType = 'HostEntry'
             }
-
             if ($diag) {
                 [PSCustomObject]@{
                     PSTypeName = 'HostFileDiag'
@@ -152,12 +148,9 @@ function Get-HostFileEntryType {
             else {
                 $entryType
             }
-
         }
-
     }
 
     end {
     }
-
 }
