@@ -49,7 +49,6 @@ function Set-HostFileEntry {
     )
 
     begin {
-
         # check that the $hostFileObject exists
         try {
             $null = Test-HostFileVariable -HostFileObject -ErrorAction Stop
@@ -57,13 +56,11 @@ function Set-HostFileEntry {
         catch {
             throw $_.Exception.Message
         }
-
     }
 
     process {
 
         foreach ($entry in $hostFileEntry) {
-
             if ($PSBoundParameters.ContainsKey('ipAddress')) {
                 $ipAddress = $ipAddress.Trim()
                 $entry.ipAddress = $ipAddress
@@ -92,18 +89,14 @@ function Set-HostFileEntry {
             }
 
             if ($PSBoundParameters.ContainsKey('comment')) {
-
                 # remove the # and trim any whitespace from the start of the string
                 $comment = $($comment -replace '#').Trim()
                 $entry.comment = $comment = "# $comment"
-
             }
             else {
-
                 # remove the # and trim any whitespace from the start of the string
                 $comment = $($entry.comment -replace '#').Trim()
                 $entry.comment = $comment = "# $comment"
-
             }
 
             try {
@@ -112,12 +105,10 @@ function Set-HostFileEntry {
             catch {
                 $_.Exception.Message
             }
-
         }
-
     }
 
     end {
+        $entry
     }
-
 }
