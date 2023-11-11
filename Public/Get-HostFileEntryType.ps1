@@ -23,10 +23,6 @@ function Get-HostFileEntryType {
     ghf | foreach { "Line {0}, {1} : {2}" -f $_.Line, $_.EntryType, $(Get-HostFileEntryType $_) }
 
     .NOTES
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
 
     #>
 

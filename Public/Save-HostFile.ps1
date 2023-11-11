@@ -6,23 +6,19 @@ function Save-HostFile {
     .DESCRIPTION
     Updates (overwrites) the 'host' file with the values from the 'HostFileObject' variable.
 
-    .PARAMETER value
-
+    .PARAMETER Backup
+    Switch parameter. Takes a backup before saving (overwriting) the hostfile.
 
     .EXAMPLE
-    An example
+    Save-Host
 
     .NOTES
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
 
     #>
 
     [CmdletBinding()]
     param (
-        [switch]$backup
+        [switch]$Backup
     )
 
     begin {

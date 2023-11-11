@@ -26,11 +26,6 @@ function New-HostFileObject {
     $HostFileObject  - This is the a custom PSObject representing the Hosts file
     $HostFile        - This is path to the host file currently loaded
 
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
-
     #>
 
     [CmdletBinding()]

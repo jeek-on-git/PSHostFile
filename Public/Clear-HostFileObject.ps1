@@ -10,10 +10,6 @@ function Clear-HostFileObject {
     Clear-HostFileObject
 
     .NOTES
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
 
     #>
 

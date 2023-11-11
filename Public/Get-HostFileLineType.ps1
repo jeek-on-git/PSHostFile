@@ -21,11 +21,7 @@ function Get-HostFileLineType {
     $content | Get-HostFileLineType
 
     .NOTES
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
-
+    
     #>
 
 [CmdletBinding()]
@@ -79,7 +75,6 @@ function Get-HostFileLineType {
 
     process {
         foreach ($line in $entry) {
-
             switch -regex ($line) {
                 $patternBlank      { $type = 'Blank'     }
                 $patternComment    { $type = 'Comment'   }

@@ -1,4 +1,20 @@
 function Convert-HostFileObjectToText {
+    <#
+    .SYNOPSIS
+    Converts HostFile object to Text
+
+    .DESCRIPTION
+    Converts HostFile object to Text
+
+    .PARAMETER HostFileObject
+    HostFile Object
+
+    .EXAMPLE
+    Convert-HostFileObjectToText $hostfile
+
+    .NOTES
+    
+    #>
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]

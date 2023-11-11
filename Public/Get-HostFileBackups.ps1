@@ -24,10 +24,6 @@ function Get-HostFileBackups {
     Get-HostFileBackups -filter *20201227-0216-03*
 
     .NOTES
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
 
     #>
 

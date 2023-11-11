@@ -16,18 +16,11 @@ function New-HostFileLineObject {
 
     .NOTES
     $i = 0
-    $content = get-content D:\Garry\Repos\Modules\HostFile\Files\hosts
+    $content = get-content $PS .\$PSScriptRoot\Files\hosts
     $a = $content | foreach {New-HostFileLineObject $_ $i ; $i++ }
     $a | ft
 
-    Author: Garry O'Neill
-
-    Change log:
-    28/12/2021 - Garry O'Neill - Replaced the fixed headercount vaule with Get-HostFileHeaderCount function to determine a host's file header count
-    01/01/2020 - Garry O'Neill - Created.
-
     #>
-
     [CmdletBinding()]
     param (
         [Parameter(Mandatory,ValueFromPipeline)]

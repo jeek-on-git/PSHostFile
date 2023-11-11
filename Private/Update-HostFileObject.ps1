@@ -23,11 +23,6 @@ function Update-HostFileObject {
     HostFileObject  - This is the Host File
     HostFile        - This is path to the host file
 
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
-
     #>
 
     [CmdletBinding()]

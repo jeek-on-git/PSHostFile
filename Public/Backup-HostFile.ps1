@@ -28,11 +28,6 @@ function Backup-HostFile {
     .NOTES
     Use the Get-HostFileBackups command to return list of backup files.
 
-    Author: Garry O'Neill
-
-    Change log:
-    01/01/2020 - Garry O'Neill - Created.
-
     #>
     [CmdletBinding()]
     param (
@@ -73,7 +68,6 @@ function Backup-HostFile {
 
         Write-Verbose $hostFileDir
         Write-Verbose $newHostFileName
-
         $hostFilePath = Join-Path $hostFileDir $newHostFileName
     }
 
